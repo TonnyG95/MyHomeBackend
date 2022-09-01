@@ -89,7 +89,9 @@ function Listings() {
                 <img src={listing.picture1} alt="{listing.title}" style={{ height: "14rem", width: "18rem" }} />
                 <p>{listing.description.substring(0, 150)}...</p>
               
-                <h5>Price = {listing.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}€</h5> 
+                {listing.property_status === "Sale" ? (<h5>Price: {listing.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}€</h5> ) : (<h5>Price: {listing.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}€ / {listing.rental_frequency}</h5> )}
+               
+
                 <Link to='/'> <Button className="btn btn-primary mb-3">Visit Property</Button> </Link>
               </Popup>
             </Marker>

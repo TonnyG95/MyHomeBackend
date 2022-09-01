@@ -19,9 +19,9 @@ function Cards() {
               </Card.Text>
 
               {listing.property_status === "Sale" ? (<Card.Text className='text-center'> 
-              <h5>Price = {listing.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}€</h5> 
+              <h5>Price: {listing.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} €</h5> 
               </Card.Text>) : (<Card.Text className='text-center'> 
-              <h5>Price = {listing.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}€ / {listing.rental_frequency}</h5> 
+              <h5>Price: {listing.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} € / {listing.rental_frequency}</h5> 
               </Card.Text>)}
 
               <Button variant="primary">Details</Button>
