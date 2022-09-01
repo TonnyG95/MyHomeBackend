@@ -17,9 +17,13 @@ function Cards() {
               <Card.Text>
                 {listing.description.substring(0, 200)}...
               </Card.Text>
-              <Card.Text className='text-center'>
+
+              {listing.property_status === "Sale" ? (<Card.Text className='text-center'> 
               <h5>Price = {listing.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}€</h5> 
-              </Card.Text>
+              </Card.Text>) : (<Card.Text className='text-center'> 
+              <h5>Price = {listing.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}€ / {listing.rental_frequency}</h5> 
+              </Card.Text>)}
+
               <Button variant="primary">Details</Button>
             </Card.Body>
           </Card> 
