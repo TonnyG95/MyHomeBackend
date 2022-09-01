@@ -1,5 +1,6 @@
 import React from 'react'
 import { Container, Row, Col, Button } from 'react-bootstrap'
+import { Link } from 'react-router-dom';
 import Card from './Card'
 
 function Home() {
@@ -8,7 +9,7 @@ function Home() {
     <Container >
     <Row className='text-center mt-4'><h1>Welcome to myHome</h1> <h4>Find your new home in minutes</h4>
     </Row>
-    <Container className='text-center my-4'> <button className='btn btn-success'>Login <i class="fa-solid fa-right-to-bracket"></i></button> or <button className='btn btn-success'>Start searching <i class="fa-solid fa-arrow-right"></i></button> </Container>
+    <Container className='text-center my-4'> <Link to='/login'><button className='btn btn-success'>Login <i class="fa-solid fa-right-to-bracket"></i></button></Link>  or <Link to='/listings'><button className='btn btn-success'>  Start searching <i class="fa-solid fa-arrow-right"></i></button></Link> </Container>
     <Container className='text-center text-muted'> <h5>Do you have property to sell? if yes</h5> </Container>
     <Container className='text-center my-4' ><button className='btn btn-primary'>Add your Property</button> </Container>
     
