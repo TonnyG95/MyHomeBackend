@@ -16,6 +16,9 @@ import officeIconPng from "./Assets/Mapicons/office.png";
 import img1 from "./Assets/img1.jpg";
 import myListings from "./Assets/Data/Dummydata";
 
+// Components
+
+import Cards from "./Cards";
 
 function Listings() {
 
@@ -44,13 +47,13 @@ function Listings() {
   return (
     <Row className='text-center'>
       <Col className="bg-dark text-light text-center py-5" xs={12} md={2} lg={2} xl={2}> 
-        
-      <h4>Listings</h4>
-
+       <div className="listings-container">
+      <Cards />
+      </div> 
        </Col>
 
 
-      <Col xs={12} md={10} lg={10} xl={10}>
+      <Col className="position-sticky" xs={12} md={10} lg={10} xl={10}>
       <div style={{height: '100vh'}}>
       <MapContainer center={[53.34981323250131, -6.260253122638746]} zoom={14} scrollWheelZoom={false}>
         <TileLayer
@@ -83,7 +86,7 @@ function Listings() {
             >
               <Popup>
                 <h5>{listing.title}</h5>
-                <img src={listing.picture1} style={{ height: "14rem", width: "18rem" }} />
+                <img src={listing.picture1} alt="{listing.title}" style={{ height: "14rem", width: "18rem" }} />
                 <p>{listing.description.substring(0, 150)}...</p>
                 <Link to='/'> <Button className="btn btn-primary mb-3">Visit Property</Button> </Link>
               </Popup>
