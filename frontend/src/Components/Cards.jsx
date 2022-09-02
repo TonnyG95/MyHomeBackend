@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react'
-import { Container, Card, Button } from 'react-bootstrap'
+import { Container, Card, Button, Spinner } from 'react-bootstrap'
 import Axios from 'axios'
 
 
@@ -8,20 +8,32 @@ import myListings from './Assets/Data/Dummydata'
 function Cards() {
 
   const [allListings, setAllListings] = useState([]);
+  const [dataIsLoading, setDataIsLoading] = useState(true)
 
   useEffect(() => {
+    const source = Axios.CancelToken.source();
     async function GetAllListings() {
       try {
-        const responese = await Axios.get('https://8000-tonnyg95-myhome-2864quj0ulx.ws-eu63.gitpod.io/api/listings/')
-        setAllListings(responese.data) 
+        const responese = await Axios.get('https://8000-tonnyg95-myhome-2864quj0ulx.ws-eu63.gitpod.io/api/listings/', {cancelToken: source.token})
+        setAllListings(responese.data)
+        setDataIsLoading(false) 
       } catch(error){
         console.log(error.responese)
       }
     }
-    GetAllListings()
+    GetAllListings();
+    return ()=>{
+      source.cancel();
+    }
   },[])
  
+  if (dataIsLoading === false ){
+    console.log(allListings)
+  }
 
+  if (dataIsLoading === true ){
+    return  <div className="container text-center my-5 p-4"> <Spinner animation="border" /></div>;
+  }
 
   return (
     <Container>
