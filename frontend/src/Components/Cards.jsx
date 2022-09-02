@@ -11,13 +11,15 @@ function Cards() {
 
   useEffect(() => {
     async function GetAllListings() {
-      const responese = await Axios.get('https://8000-tonnyg95-myhome-2864quj0ulx.ws-eu63.gitpod.io/api/listings/')
-      //console.log(responese.data);
-      setAllListings(responese.data)
+      try {
+        const responese = await Axios.get('https://8000-tonnyg95-myhome-2864quj0ulx.ws-eu63.gitpod.io/api/listings/')
+        setAllListings(responese.data) 
+      } catch(error){
+        console.log(error.responese)
+      }
     }
     GetAllListings()
   },[])
-  
  
 
 
