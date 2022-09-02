@@ -22,6 +22,8 @@ import Cards from "./Cards";
 
 function Listings() {
 
+  fetch('https://8000-tonnyg95-myhome-2864quj0ulx.ws-eu63.gitpod.io/api/listings/').then(response => response.json()).then(data => console.log(data))
+
   const houseIcon = new Icon({
 		iconUrl: houseIconPng,
 		iconSize: [40, 40],
