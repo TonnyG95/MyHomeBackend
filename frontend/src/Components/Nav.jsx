@@ -2,7 +2,7 @@ import Button from 'react-bootstrap/Button';
 import { Navbar, Nav, Container, Row } from 'react-bootstrap'
 import { LinkContainer } from 'react-router-bootstrap';
 
-function NavScrollExample() {
+function Navigation() {
   return (
     <Navbar bg="dark" className=" p-4 "variant="dark" expand="lg" collapseOnSelect>
       <Container fluid>
@@ -45,4 +45,4 @@ function NavScrollExample() {
   );
 }
 
-export default NavScrollExample;
+export default Navigation;

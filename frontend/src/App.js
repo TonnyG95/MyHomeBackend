@@ -6,14 +6,14 @@ import './App.css';
 import Home from './Components/Home';
 import Login from './Components/Login';
 import Listings from './Components/Listings';
-import Nav from './Components/Nav';
+import Navigation from './Components/Nav';
 import Footer from './Components/Footer';
 import Testing from './Components/Testing';
 
 function App() {
   return (
     <BrowserRouter>
-    <Nav />
+    <Navigation />
     <Routes>
       <Route path='/' element={ <Home /> } />
       <Route path='/login' element={ <Login />} />

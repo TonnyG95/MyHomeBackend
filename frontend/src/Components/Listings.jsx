@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Container, Row, Col, Button } from 'react-bootstrap'
 import { Link } from 'react-router-dom';
+import Axios from 'axios'
 
 // React Leaflet
 import { MapContainer, TileLayer, useMap, Marker, Popup } from "react-leaflet";
@@ -22,7 +23,9 @@ import Cards from "./Cards";
 
 function Listings() {
 
-  fetch('https://8000-tonnyg95-myhome-2864quj0ulx.ws-eu63.gitpod.io/api/listings/').then(response => response.json()).then(data => console.log(data))
+  // fetch('https://8000-tonnyg95-myhome-2864quj0ulx.ws-eu63.gitpod.io/api/listings/').then(response => response.json()).then(data => console.log(data))
+
+
 
   const houseIcon = new Icon({
 		iconUrl: houseIconPng,
@@ -43,8 +46,20 @@ function Listings() {
 	const [latitude, setLatitude] = useState(53.34981323250131);
 	const [longitude, setLongitude] = useState(-6.260253122638746);
 
+  const [allListings, setAllListings] = useState([]);
 
+  useEffect(() => {
+    async function GetAllListings() {
+      const responese = await Axios.get('https://8000-tonnyg95-myhome-2864quj0ulx.ws-eu63.gitpod.io/api/listings/')
+      //console.log(responese.data);
+      setAllListings(responese.data)
+    }
+    GetAllListings()
+  },[])
 
+ 
+ 
+  console.log(allListings)
 
   return (
     <Row className='text-center'>
@@ -63,7 +78,7 @@ function Listings() {
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
 
-        {myListings.map((listing)=>{
+        {allListings.map((listing)=>{
 
           function IconDisplay(){
             if (listing.listing_type === 'House'){
@@ -79,17 +94,14 @@ function Listings() {
 
           return (
             <Marker
-              key={listing.id}
-              icon={IconDisplay()}
-              position={[
-                listing.location.coordinates[0],
-                listing.location.coordinates[1],
-              ]}
+            key={listing.id}
+            icon={IconDisplay()}
+            position={[listing.latitude, listing.longitude]}
             >
               <Popup>
                 <h5>{listing.title}</h5>
-                <img src={listing.picture1} alt="{listing.title}" style={{ height: "14rem", width: "18rem" }} />
-                <p>{listing.description.substring(0, 150)}...</p>
+                <img src={listing.picture1} alt={listing.title} style={{ height: "14rem", width: "18rem" }} />
+                <p>{listing.description}</p>
               
                 {listing.property_status === "Sale" ? (<h5>Price: {listing.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}€</h5> ) : (<h5>Price: {listing.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}€ / {listing.rental_frequency}</h5> )}
                
