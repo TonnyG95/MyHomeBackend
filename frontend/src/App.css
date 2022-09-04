@@ -2,6 +2,8 @@
 
 
 
+
+
 .leaflet-container {
   height: 100%;
   width: 100%;
@@ -10,6 +12,21 @@
   
 }
 
+.no-decoration {
+  text-decoration: none;
+}
+
+.no-decoration:hover{
+  color: #0275d8
+}
+
+.login-form{
+  margin: auto;
+}
+
+h1{
+  text-transform: uppercase;
+}
 
 .bg-dark2 {
   background-color: #0a0b0c;
