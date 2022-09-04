@@ -114,7 +114,7 @@ function Listings() {
               <Popup>
                 <h5>{listing.title}</h5>
                 <img src={listing.picture1} alt={listing.title} style={{ height: "14rem", width: "18rem" }} />
-                <p>{listing.description}</p>
+                <p>{listing.description.substring(0, 200)}...</p>
               
                 {listing.property_status === "Sale" ? (<h5>Price: {listing.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}€</h5> ) : (<h5>Price: {listing.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}€ / {listing.rental_frequency}</h5> )}
                

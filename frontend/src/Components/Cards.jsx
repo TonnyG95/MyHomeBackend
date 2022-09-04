@@ -45,7 +45,7 @@ function Cards() {
             <Card.Body>
               <Card.Title>{listing.title}</Card.Title>
               <Card.Text>
-                {listing.description}
+                {listing.description.substring(0, 150)}...
               </Card.Text>
 
               {listing.property_status === "Sale" ? (<Card.Text className='text-center'> 

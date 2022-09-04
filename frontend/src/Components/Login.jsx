@@ -1,46 +1,144 @@
-import React from 'react'
-import { Container, Row, Col, Button, Spinner, Form } from "react-bootstrap";
-import { Link } from 'react-router-dom';
+import React, {useEffect} from "react";
+import Axios from 'axios';
+import { Row, Col, Button, Form } from "react-bootstrap";
+import { Link } from "react-router-dom";
+import { useImmerReducer } from "use-immer";
 
 function Login() {
+  const initialState = {
+    usernameValue: "",
+    passwordValue: "",
+    sendRequest: 0,
+    token: ''
+  };
+
+  function ReducerFuction(draft, action) {
+    switch (action.type) {
+      case "catchUsernameChange":
+        draft.usernameValue = action.usernameChosen;
+        break;
+
+      case "catchPasswordChange":
+        draft.passwordValue = action.passwordChosen;
+        break;
+      case 'changeSendRequest':
+          draft.sendRequest = draft.sendRequest +1;
+          break
+      case 'catchToken':
+        draft.token = action.tokenValue
+        break
+    }
+  }
+
+  const [state, dispatch] = useImmerReducer(ReducerFuction, initialState);
+
+  function FormSubmit(e) {
+    e.preventDefault();
+    console.log("form subited");
+    dispatch({type: 'changeSendRequest'});
+  }
+
+  useEffect(() => {
+    const source = Axios.CancelToken.source();
+    if (state.sendRequest) {
+      async function SingIn() {
+        try {
+          const response = await Axios.post(
+            "https://8000-tonnyg95-myhome-2864quj0ulx.ws-eu63.gitpod.io/api-auth-djoser/token/login/",
+            {
+              username: state.usernameValue,
+
+              password: state.passwordValue,
+            },
+            { cancelToken: source.token }
+          );
+
+          console.log(response);
+        } catch (error) {
+          console.log(error.response);
+        }
+      }
+      SingIn();
+      return () => {
+        source.cancel();
+      };
+    }
+  }, [state.sendRequest]);
+
+
+
+// Get token
+
+
+  useEffect(() => {
+    const source = Axios.CancelToken.source();
+    if (state.token !== '') {
+      async function GetUserInfo() {
+        try {
+          const response = await Axios.get(
+            "https://8000-tonnyg95-myhome-2864quj0ulx.ws-eu63.gitpod.io/api-auth-djoser/users/me/",
+            {
+              headers: {Authorization : 'Token '.concat(state.token)}
+            },
+            { cancelToken: source.token }
+          );
+
+          console.log(response);
+          dispatch({type: 'catchToken', tokenValue: response.data.auth_token})
+        } catch (error) {
+          console.log(error.response);
+        }
+      }
+      GetUserInfo();
+      return () => {
+        source.cancel();
+      };
+    }
+  }, [state.sendRequest]);
+
+
+
+
+
+
   return (
     <Row className="text-center login-form justify-content-center align-items-center">
-
       <Col className="my-4" xs={12} md={9} lg={9} xl={9}>
-        <Form className="px-5 box bg-light" >
-        <h1 className="m-4">Login</h1>
+        <Form onSubmit={FormSubmit} className="px-5 box bg-light">
+          <h1 className="m-4">Login</h1>
           <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Label>Username</Form.Label>
-            <Form.Control id='name' type="text" placeholder="Enter your username" required />
+            <Form.Control
+              
+              type="text"
+              placeholder="Enter your username"
+              value={state.usernameValue}
+              onChange={(e) => dispatch({type: 'catchUsernameChange', usernameChosen: e.target.value})}
+            />
           </Form.Group>
-
-          
 
           <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Label>Password</Form.Label>
-            <Form.Control id='password' type="password" required />
-            <Form.Text className="text-muted">
-              Enter your password
-            </Form.Text>
+            <Form.Control  value={state.passwordValue}
+              onChange={(e) => dispatch({type: 'catchPasswordChange', passwordChosen: e.target.value})} type="password" />
+            <Form.Text className="text-muted">Enter your password</Form.Text>
           </Form.Group>
 
-          
-           
-            <Button className='mx-1' variant="success" type="submit">
-                Log In
-            </Button>
-            <Button className='mx-1' variant="danger" type="reset">
-                Clear
-            </Button>
+          <Button className="mx-1" variant="success" type="submit">
+            Log In
+          </Button>
+          <Button className="mx-1" variant="danger" type="reset">
+            Clear
+          </Button>
 
-            <h5 className="text-muted mt-5">Don't have an account?</h5>
-            <Link className=" no-decoration" to="/register">Create here</Link>
-             
-          
+          <h5 className="text-muted mt-5">Don't have an account?</h5>
+          <Link className=" no-decoration" to="/register">
+            Create here
+          </Link>
         </Form>
       </Col>
     </Row>
   );
 }
 
-export default Login
+export default Login;
