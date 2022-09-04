@@ -6,7 +6,7 @@ from django.utils import timezone
 
 class Listing(models.Model):
     title = models.CharField(max_length=150)
-    decription = models.TextField(null=True, blank=True)
+    description = models.TextField(null=True, blank=True)
     choices_area = (
         ('Dublin', 'Dublin'),
         ('Outside Dublin', 'Outside Dublin'),
@@ -41,6 +41,11 @@ class Listing(models.Model):
 
     latitude = models.CharField(max_length=150)
     longitude = models.CharField(max_length=150)
+    picture1 = models.ImageField(blank=True, null=True)
+    picture2 = models.ImageField(blank=True, null=True)
+    picture3 = models.ImageField(blank=True, null=True)
+    picture4 = models.ImageField(blank=True, null=True)
+    picture5 = models.ImageField(blank=True, null=True)
 
     def __str__(self):
         return self.title

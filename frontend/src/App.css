@@ -30,3 +30,11 @@
   overflow-y: scroll;
 
 }
+
+.box{
+  box-shadow: 2rem rgb(238, 238, 238);
+  padding: 3rem;
+  border-radius: 2rem;
+  border: 0.3rem solid rgb(238, 238, 238);
+  margin: 2rem
+}
