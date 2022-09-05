@@ -1,10 +1,19 @@
-import React, {useEffect} from "react";
+import React, {useEffect, useContext} from "react";
 import Axios from 'axios';
 import { Row, Col, Button, Form } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { useImmerReducer } from "use-immer";
 
+// Contexts
+ import DispatchContext from "../Contexts/DispatchContext";
+ import StateContext from "../Contexts/StateContext";
+
+
 function Login() {
+
+  const GlobalDispatch = useContext(DispatchContext)
+  const GlobalState = useContext(StateContext)
+
   const initialState = {
     usernameValue: "",
     passwordValue: "",
@@ -54,6 +63,16 @@ function Login() {
           );
 
           console.log(response);
+          dispatch({
+            type: 'catchToken',
+            tokenValue: response.data.auth_token,
+          })
+
+          GlobalDispatch({
+            type: 'catchToken',
+            tokenValue: response.data.auth_token,
+          })
+
         } catch (error) {
           console.log(error.response);
         }
@@ -84,7 +103,7 @@ function Login() {
           );
 
           console.log(response);
-          dispatch({type: 'catchToken', tokenValue: response.data.auth_token})
+          GlobalDispatch({type: 'userSignsIn', usernameInfo: response.data.username, emailInfo: response.data.email, idInfo: response.data.id });
         } catch (error) {
           console.log(error.response);
         }
@@ -135,7 +154,9 @@ function Login() {
           <Link className=" no-decoration" to="/register">
             Create here
           </Link>
+          
         </Form>
+        
       </Col>
     </Row>
   );
