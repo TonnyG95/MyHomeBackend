@@ -14,6 +14,7 @@ function Register() {
   };
 
   function ReducerFuction(draft, action) {
+    // eslint-disable-next-line default-case
     switch (action.type) {
       case "catchUsernameChange":
         draft.usernameValue = action.usernameChosen;

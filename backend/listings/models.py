@@ -1,10 +1,14 @@
 from random import choices
 from django.db import models
 from django.utils import timezone
+from django.contrib.auth import get_user_model
+User = get_user_model()
+
 
 
 
 class Listing(models.Model):
+    seller = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True)
     title = models.CharField(max_length=150)
     description = models.TextField(null=True, blank=True)
     choices_area = (

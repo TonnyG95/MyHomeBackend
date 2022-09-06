@@ -13,6 +13,7 @@ import Navigation from './Components/Nav';
 import Footer from './Components/Footer';
 import Testing from './Components/Testing';
 import Register from './Components/Register';
+import AddProperty from './Components/AddProperty';
 
 // Context
 
@@ -74,6 +75,7 @@ function App() {
       <Route path='/listings' element={ <Listings />} />
       <Route path='/register' element={ <Register />} />
       <Route path='/testing' element={ <Testing />} />
+      <Route path='/add-property' element={ <AddProperty />} />
     </Routes>
     <Footer />
     </BrowserRouter>

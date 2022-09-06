@@ -1,3 +1,4 @@
+/* eslint-disable default-case */
 import React, {useEffect, useContext} from "react";
 import Axios from 'axios';
 import { Row, Col, Button, Form } from "react-bootstrap";

@@ -51,7 +51,7 @@ function Navigation() {
               <Nav.Link> <i class="fa-solid fa-building-user"></i> Agencies</Nav.Link>
             </LinkContainer>
 
-            <LinkContainer to="/">
+            <LinkContainer to="/add-property">
               <Nav.Link> <i class="fa-solid fa-house-medical"></i> Add Property</Nav.Link>
             </LinkContainer>
 
@@ -59,18 +59,10 @@ function Navigation() {
             {GlobalState.userIsLogged ? <Nav.Link onClick={HandleLogout}> <i class="fa-solid fa-user"></i> Logout</Nav.Link> :<Nav.Link> <Link className='no-decoration text-light' to='/login'><i class="fa-solid fa-user"></i> Login</Link> </Nav.Link> }
             </LinkContainer>
 
-            
-            
-            <Nav.Link>
+            <LinkContainer to="/">
+            {GlobalState.userIsLogged ?  <Nav.Link> Hi {GlobalState.userUsername} </Nav.Link> : <Nav.Link>  </Nav.Link> }
+            </LinkContainer>
 
-            
-           
-            </Nav.Link> 
-
-            
-            
-            
-    
           </Nav>
           
         </Navbar.Collapse>
