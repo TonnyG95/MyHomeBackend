@@ -6,11 +6,10 @@ import { useImmerReducer } from "use-immer";
 import Axios from 'axios';
 
 // Contexts
- import DispatchContext from "../Contexts/DispatchContext";
  import StateContext from "../Contexts/StateContext";
 
 function AddProperty() {
-    const GlobalDispatch = useContext(DispatchContext)
+
     const GlobalState = useContext(StateContext)
 
 
@@ -200,42 +199,43 @@ function AddProperty() {
             async function AddProperty() {
                 const formData = new FormData()
 
-                    formData.append('title', state.titleValue);
-                    formData.append('description', state.descriptionValue );
-                    formData.append('area', state.areaValue );
-                    formData.append('town', state.townValue );
-                    formData.append('listing_type ', state.listingTypeValue );
-                    formData.append('property_status ', state.propertyStatusValue );
-                    formData.append('price ', state.priceValue );
-                    formData.append('rental_frequency ', state.rentalFrequencyValue );
-                    formData.append('rooms ', state.roomsValue );
-                    formData.append('furnished ', state.furnishedValue );
-                    formData.append('pool ', state.poolValue );
-                    formData.append('elevator ', state.elevatorValue );
-                    formData.append('cctv ', state.cctvValue );
-                    formData.append('parking ', state.parkingValue );
-                    formData.append('latitude ', state.latitudeValue );
-                    formData.append('longitude ', state.longitudeValue );
-                    formData.append('picture1 ', state.picture1Value );
-                    formData.append('picture2 ', state.picture2Value );
-                    formData.append('picture3 ', state.picture3Value );
-                    formData.append('picture4 ', state.picture4Value );
-                    formData.append('picture5 ', state.picture5Value );
-                    formData.append('seller ', GlobalState.userId );
+                    formData.append("title", state.titleValue);
+                    formData.append("description", state.descriptionValue );
+                    formData.append("area", state.areaValue );
+                    formData.append("town", state.townValue );
+                    formData.append("listing_type", state.listingTypeValue );
+                    formData.append("property_status", state.propertyStatusValue );
+                    formData.append("price", state.priceValue );
+                    formData.append("rental_frequency", state.rentalFrequencyValue );
+                    formData.append("rooms", state.roomsValue );
+                    formData.append("furnished", state.furnishedValue );
+                    formData.append("pool", state.poolValue );
+                    formData.append("elevator", state.elevatorValue );
+                    formData.append("cctv", state.cctvValue );
+                    formData.append("parking", state.parkingValue );
+                    formData.append("latitude", state.latitudeValue );
+                    formData.append("longitude", state.longitudeValue );
+                    formData.append("picture1", state.picture1Value );
+                    formData.append("picture2", state.picture2Value );
+                    formData.append("picture3", state.picture3Value );
+                    formData.append("picture4", state.picture4Value );
+                    formData.append("picture5", state.picture5Value );
+                    formData.append("seller", GlobalState.userId );
                 
                 try {
 
-                    const response = await Axios.post("https://8000-tonnyg95-myhome-2864quj0ulx.ws-eu63.gitpod.io/api/listings/create/", formData)
-                    console.log(response)
+                    const response = await Axios.post("https://8000-tonnyg95-myhome-2864quj0ulx.ws-eu63.gitpod.io/api/listings/create/", formData);
+                    console.log(response);
 
                 } catch (e) {
-                    console.log(e.response)
+                    console.log(e.response);
                 }
 
             }
-            AddProperty()
+
+            AddProperty();
         }
-      },[state.sendRequest])
+      }, [state.sendRequest]);
 
 
   return (
@@ -511,7 +511,8 @@ function AddProperty() {
                 
             </div>
 
-        
+            
+          
 
             
 
@@ -527,10 +528,14 @@ function AddProperty() {
               xl={6}
               className="justify-content-center align-items-center"
             >
-              <Button className="mx-1 mt-4" variant="success" type="submit">
+               <Button className="mx-1 mt-4" variant="success" type="submit">
             Submit
           </Button>
+             
             </Row>
+
+           
+
           </Row>
         </Form>
       </Col>
@@ -538,4 +543,4 @@ function AddProperty() {
   );
 }
 
-export default AddProperty
+export default AddProperty;
