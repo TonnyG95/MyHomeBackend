@@ -117,7 +117,7 @@ function Register() {
 
           <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Label>Password</Form.Label>
-            <Form.Control
+            <Form.Control placeholder="Password must contain uppercase, lowercase, numbers and symbols"
               value={state.passwordValue}
               onChange={(e) => dispatch({type: 'catchPasswordChange', passwordChosen: e.target.value})}
               type="password"
@@ -129,7 +129,7 @@ function Register() {
 
           <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Label>Confirm Password</Form.Label>
-            <Form.Control
+            <Form.Control placeholder="Password must contain uppercase, lowercase, numbers and symbols"
               value={state.password2Value}
               onChange={(e) => dispatch({type: 'catchPassword2Change', password2Chosen: e.target.value})}
               type="password"

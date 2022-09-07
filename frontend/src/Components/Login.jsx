@@ -157,9 +157,7 @@ function Login() {
           <Button className="mx-1" variant="success" type="submit">
             Log In
           </Button>
-          <Button className="mx-1" variant="danger" type="reset">
-            Clear
-          </Button>
+          
 
           <h5 className="text-muted mt-5">Don't have an account?</h5>
           <Link className=" no-decoration" to="/register">
