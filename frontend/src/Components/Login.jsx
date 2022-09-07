@@ -2,7 +2,7 @@
 import React, {useEffect, useContext} from "react";
 import Axios from 'axios';
 import { Row, Col, Button, Form } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useNavigate  } from "react-router-dom";
 import { useImmerReducer } from "use-immer";
 
 // Contexts
@@ -15,30 +15,39 @@ function Login() {
   const GlobalDispatch = useContext(DispatchContext)
   const GlobalState = useContext(StateContext)
 
+  const navigate = useNavigate()
+
   const initialState = {
-    usernameValue: "",
-    passwordValue: "",
-    sendRequest: 0,
-    token: ''
-  };
+		usernameValue: "",
+		passwordValue: "",
+		sendRequest: 0,
+		token: "",
+		
+	};
+
 
   function ReducerFuction(draft, action) {
-    switch (action.type) {
-      case "catchUsernameChange":
-        draft.usernameValue = action.usernameChosen;
-        break;
+		switch (action.type) {
+			case "catchUsernameChange":
+				draft.usernameValue = action.usernameChosen;
+				draft.serverError = false;
+				break;
 
-      case "catchPasswordChange":
-        draft.passwordValue = action.passwordChosen;
-        break;
-      case 'changeSendRequest':
-          draft.sendRequest = draft.sendRequest +1;
-          break
-      case 'catchToken':
-        draft.token = action.tokenValue
-        break
-    }
-  }
+			case "catchPasswordChange":
+				draft.passwordValue = action.passwordChosen;
+				draft.serverError = false;
+				break;
+
+			case "changeSendRequest":
+				draft.sendRequest = draft.sendRequest + 1;
+				break;
+
+			case "catchToken":
+				draft.token = action.tokenValue;
+				break;
+      }
+			
+	}
 
   const [state, dispatch] = useImmerReducer(ReducerFuction, initialState);
 
@@ -104,7 +113,8 @@ function Login() {
           );
 
           console.log(response);
-          GlobalDispatch({type: 'userSignsIn', usernameInfo: response.data.username, emailInfo: response.data.email, idInfo: response.data.id });
+          GlobalDispatch({type: 'userSignsIn', usernameInfo: response.data.username, emailInfo: response.data.email, IdInfo: response.data.id });
+          navigate('/')
         } catch (error) {
           console.log(error.response);
         }

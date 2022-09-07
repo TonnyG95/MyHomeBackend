@@ -13,7 +13,7 @@ class Listing(models.Model):
     description = models.TextField(null=True, blank=True)
     choices_area = (
         ('Dublin', 'Dublin'),
-        ('Outside Dublin', 'Outside Dublin'),
+        ('Outside Dublin', 'OutSide Dublin'),
     )
     area = models.CharField(max_length=20, blank=True, null=True,  choices = choices_area)
     town = models.CharField(max_length=50, blank=True, null=True)

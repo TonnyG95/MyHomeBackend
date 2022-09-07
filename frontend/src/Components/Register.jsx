@@ -1,10 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { Row, Col, Button, Form } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Axios from "axios";
 import { useImmerReducer } from "use-immer";
 
 function Register() {
+
+  const navigate = useNavigate()
+
+
   const initialState = {
     usernameValue: "",
     emailValue: "",
@@ -60,7 +64,7 @@ function Register() {
           );
 
           console.log(response);
-          
+          navigate('/login')
         } catch (error) {
           console.log(error.response);
         }
@@ -139,6 +143,8 @@ function Register() {
           <Button className="mx-1" variant="danger" type="reset">
             Clear
           </Button>
+
+          
 
           <h5 className="text-muted mt-5">Already have an account?</h5>
           <Link className=" no-decoration" to="/login">

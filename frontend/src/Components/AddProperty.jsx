@@ -1,7 +1,7 @@
 /* eslint-disable default-case */
 import React, {useEffect, useState, useContext} from 'react'
 import { Row, Col, Button, Form } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useImmerReducer } from "use-immer";
 import Axios from 'axios';
 
@@ -11,6 +11,8 @@ import Axios from 'axios';
 function AddProperty() {
 
     const GlobalState = useContext(StateContext)
+
+    const navigate = useNavigate()
 
 
     const initialState = {
@@ -36,7 +38,7 @@ function AddProperty() {
         picture4Value: "",
         picture5Value: "",
         uploadedPictures: [],
-
+        sendRequest: 0,
       };
     
       function ReducerFuction(draft, action) {
@@ -226,7 +228,7 @@ function AddProperty() {
 
                     const response = await Axios.post("https://8000-tonnyg95-myhome-2864quj0ulx.ws-eu63.gitpod.io/api/listings/create/", formData);
                     console.log(response);
-
+                    navigate('/listings')
                 } catch (e) {
                     console.log(e.response);
                 }
@@ -373,7 +375,7 @@ function AddProperty() {
                 listingTypeChosen: e.target.value,
               })
             }>
-            <option>Select</option>
+            <option></option>
             <option>House</option>
             <option>Apartment</option>
             <option>Office</option>
@@ -390,7 +392,7 @@ function AddProperty() {
                 areaChosen: e.target.value,
               })
             }>
-            <option>Select</option>
+            <option></option>
             <option>Dublin</option>
             <option>Outside Dublin</option>
             
@@ -405,7 +407,7 @@ function AddProperty() {
                 propertyStatusChosen: e.target.value,
             })
             }>
-            <option>Select</option>
+            <option></option>
             <option>Sale</option>
             <option>Rent</option>
 
@@ -420,7 +422,7 @@ function AddProperty() {
                 rentalFrequencyChosen: e.target.value,
             })
             }>
-            <option>Select</option>
+            <option></option>
             <option>Month</option>
             <option>Week</option>
             <option>Day</option>
