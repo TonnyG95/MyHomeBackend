@@ -1,6 +1,6 @@
 /* eslint-disable default-case */
 import React, {useEffect, useState, useContext} from 'react'
-import { Row, Col, Button, Form } from "react-bootstrap";
+import { Row, Col, Button, Form, Container } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import { useImmerReducer } from "use-immer";
 import Axios from 'axios';
@@ -13,6 +13,50 @@ function AddProperty() {
     const GlobalState = useContext(StateContext)
 
     const navigate = useNavigate()
+
+    
+	
+
+  function SubmitButtonDisplay() {
+		if (
+			GlobalState.userIsLogged &&
+			state.userProfile.agencyName !== null &&
+			state.userProfile.agencyName !== "" &&
+			state.userProfile.phoneNumber !== null &&
+			state.userProfile.phoneNumber !== ""
+		) {
+			return (
+				<Button className="mx-1 mt-4" variant="success" type="submit">
+          Submit
+        </Button>
+			);
+		} else if (
+			GlobalState.userIsLogged &&
+			(state.userProfile.agencyName === null ||
+				state.userProfile.agencyName === "" ||
+				state.userProfile.phoneNumber === null ||
+				state.userProfile.phoneNumber === "")
+		) {
+			return (
+				<>
+        <Row><h5 className='text-center text-muted'>You need to complete your profile to be able to add property</h5></Row>
+        
+        <Button disabled className="mx-1 mt-4" variant="success">
+          Submit
+        </Button>
+        </>
+			);
+		} else if (!GlobalState.userIsLogged) {
+			return (
+        <>
+				<Row><h5 className='text-center text-muted'>You need to Log in to your account to add listing</h5></Row>
+        <Row> <Link to='/login'> <Button className="mx-1 mt-4" variant="success" type="submit" >
+        Log in
+      </Button> </Link> </Row>
+      </>
+			);
+		}
+	}
 
 
     const initialState = {
@@ -39,6 +83,10 @@ function AddProperty() {
         picture5Value: "",
         uploadedPictures: [],
         sendRequest: 0,
+        userProfile: {
+          agencyName: '',
+          phoneNumber: '',
+        }
       };
     
       function ReducerFuction(draft, action) {
@@ -133,12 +181,17 @@ function AddProperty() {
             
             case 'changeSendRequest':
                 draft.sendRequest = draft.sendRequest + 1;
-                break    
+                break
+                
+              case 'catchUserProfileInfo':
+              draft.userProfile.agencyName = action.profileObject.agency_name;
+              draft.userProfile.phoneNumber = action.profileObject.phone_number;
+              break 
         
     
         }
       }
-
+      
 
       const [state, dispatch] = useImmerReducer(ReducerFuction, initialState);
 
@@ -187,6 +240,21 @@ function AddProperty() {
 
 
     // Picture Upload END
+
+    // Request profile info
+
+    useEffect(()=>{
+      async function GetProfileInfo(){
+        try {
+          const response = await Axios.get(`https://8000-tonnyg95-myhome-2864quj0ulx.ws-eu63.gitpod.io/api/profiles/${GlobalState.userId}`);
+          console.log(response.data)
+          dispatch({type: 'catchUserProfileInfo', profileObject: response.data })
+        } catch(e){
+          console.log(e.response)
+        }
+      }
+      GetProfileInfo()
+    },[])
 
 
     function FormSubmit(e) {
@@ -530,13 +598,9 @@ function AddProperty() {
               xl={6}
               className="justify-content-center align-items-center"
             >
-               <Button className="mx-1 mt-4" variant="success" type="submit">
-            Submit
-          </Button>
-             
-            </Row>
+              {SubmitButtonDisplay()}
 
-           
+           </Row>
 
           </Row>
         </Form>

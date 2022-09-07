@@ -1,19 +1,16 @@
 import React, {useEffect, useState} from 'react'
-import { Container, Card, Button, Spinner, OverlayTrigger, Tooltip } from 'react-bootstrap'
+import { Container, Card, Button, Spinner } from 'react-bootstrap'
 import Axios from 'axios'
 
 
-import myListings from './Assets/Data/Dummydata'
+
 
 function Cards() {
 
   const [allListings, setAllListings] = useState([]);
   const [dataIsLoading, setDataIsLoading] = useState(true)
-  const renderTooltip = (props) => (
-    <Tooltip id="button-tooltip" {...props}>
-      Show on map
-    </Tooltip>
-  );
+  
+  
 
   useEffect(() => {
     const source = Axios.CancelToken.source();
@@ -85,15 +82,7 @@ function Cards() {
 
                 <Button variant="primary">Details</Button>
 
-                <OverlayTrigger
-                  placement="right"
-                  delay={{ show: 250, hide: 400 }}
-                  overlay={renderTooltip}
-                >
-                  <Button className='mx-3' variant="primary">
-                    <i class="fa-solid fa-location-dot"></i>
-                  </Button>
-                </OverlayTrigger>
+               
               </Card.Body>
             </Card>
           );

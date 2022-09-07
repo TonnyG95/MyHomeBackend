@@ -3,6 +3,10 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import './App.css';
 import { useImmerReducer } from "use-immer";
 
+// React Leaflet
+import { MapContainer, TileLayer, useMap, Marker, Popup } from "react-leaflet";
+import { Icon } from "leaflet";
+
 
 // Components
 

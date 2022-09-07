@@ -3,6 +3,7 @@ import { Container, Row, Col, Button } from 'react-bootstrap'
 import { Link } from 'react-router-dom';
 import Card from './Cards'
 
+
 function Home() {
   return (
     <>
@@ -11,7 +12,7 @@ function Home() {
     </Row>
     <Container className='text-center my-4'> <Link to='/login'><button className='btn btn-success'>Login <i class="fa-solid fa-right-to-bracket"></i></button></Link>  or <Link to='/listings'><button className='btn btn-success'>  Start searching <i class="fa-solid fa-arrow-right"></i></button></Link> </Container>
     <Container className='text-center text-muted'> <h5>Do you have property to sell? if yes</h5> </Container>
-    <Container className='text-center my-4' ><button className='btn btn-primary'>Add your Property</button> </Container>
+    <Container className='text-center my-4' > <Link to='/add-property'><button className='btn btn-primary'>Add your Property</button> </Link> </Container>
     
     </Container>
     <Row className='text-center'>

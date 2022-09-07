@@ -149,7 +149,7 @@ function Login() {
 
           <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Label>Password</Form.Label>
-            <Form.Control  value={state.passwordValue}
+            <Form.Control placeholder="Enter Password" value={state.passwordValue}
               onChange={(e) => dispatch({type: 'catchPasswordChange', passwordChosen: e.target.value})} type="password" />
             <Form.Text className="text-muted">Enter your password</Form.Text>
           </Form.Group>
