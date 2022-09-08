@@ -47,9 +47,7 @@ function Navigation() {
               <Nav.Link> <i class="fa-solid fa-house-laptop"></i> Listings</Nav.Link>
             </LinkContainer>
 
-            <LinkContainer to="/">
-              <Nav.Link> <i class="fa-solid fa-building-user"></i> Agencies</Nav.Link>
-            </LinkContainer>
+
 
             <LinkContainer to="/add-property">
               <Nav.Link> <i class="fa-solid fa-house-medical"></i> Add Property</Nav.Link>

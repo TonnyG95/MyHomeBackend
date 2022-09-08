@@ -146,6 +146,7 @@ function Profile() {
                   <img className='rounded my-4 placeholed-image' src='https://res.cloudinary.com/dsq1kzjdy/image/upload/v1662651727/media/No-Image-Placeholder.svg_bgopvn.png' />
                 
                     <h5 className='text-center m-4'>Information:</h5>
+                    <h6 className='text-center m-4'>Please fill out required filed to update your profile</h6>
 
                     <Container>
                     <Row className='mt-5'>
