@@ -40,6 +40,7 @@ CSRF_TRUSTED_ORIGINS=['https://8000-tonnyg95-myhome-2864quj0ulx.ws-eu63.gitpod.i
 # Application definition
 
 INSTALLED_APPS = [
+    'jazzmin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

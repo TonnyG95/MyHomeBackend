@@ -16,6 +16,12 @@
   text-decoration: none;
 }
 
+.align-center{
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
 
 
 .login-form{
@@ -52,4 +58,25 @@ h1{
   border-radius: 2rem;
   border: 0.3rem solid rgb(238, 238, 238);
   margin: 2rem
+}
+
+.text-left{
+  text-align: left;
+  padding: 5rem;
+  margin-left: 5rem;
+}
+
+.text-right{
+  text-align: right;
+  padding: 5rem;
+  margin-right: 5rem;
+}
+
+.main{
+  height: 100vh;
+}
+
+.placeholed-image{
+  width: 200px;
+  height: 200px;
 }

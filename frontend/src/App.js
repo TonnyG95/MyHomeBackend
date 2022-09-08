@@ -18,6 +18,7 @@ import Footer from './Components/Footer';
 import Testing from './Components/Testing';
 import Register from './Components/Register';
 import AddProperty from './Components/AddProperty';
+import Profile from './Components/Profile';
 
 // Context
 
@@ -82,6 +83,7 @@ function App() {
       <Route path='/register' element={ <Register />} />
       <Route path='/testing' element={ <Testing />} />
       <Route path='/add-property' element={ <AddProperty />} />
+	  <Route path='/profile' element={ <Profile />} />
     </Routes>
     <Footer />
     </BrowserRouter>

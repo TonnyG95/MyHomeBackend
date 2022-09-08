@@ -59,8 +59,12 @@ function Navigation() {
             {GlobalState.userIsLogged ? <Nav.Link onClick={HandleLogout}> <i class="fa-solid fa-user"></i> Logout</Nav.Link> :<Nav.Link> <Link className='no-decoration text-light' to='/login'><i class="fa-solid fa-user"></i> Login</Link> </Nav.Link> }
             </LinkContainer>
 
-            <LinkContainer to="/">
+            <LinkContainer to="/profile">
             {GlobalState.userIsLogged ?  <Nav.Link> Hi {GlobalState.userUsername} </Nav.Link> : <Nav.Link>  </Nav.Link> }
+            </LinkContainer>
+
+            <LinkContainer to="/profile">
+            {GlobalState.userIsLogged ?   <Nav.Link className='no-decoration text-light' > Your Profile </Nav.Link>  : <Nav.Link>  </Nav.Link> }
             </LinkContainer>
 
           </Nav>

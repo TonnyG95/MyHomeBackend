@@ -77,7 +77,7 @@ function Register() {
   }, [state.sendRequest]);
 
   return (
-    <Row className="text-center ">
+    <Row className="text-center main ">
       <Col
         className="bg-dark text-light text-center py-5"
         xs={12}
