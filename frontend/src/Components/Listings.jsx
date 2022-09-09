@@ -13,9 +13,7 @@ import houseIconPng from "./Assets/Mapicons/house.png";
 import apartmentIconPng from "./Assets/Mapicons/apartment.png";
 import officeIconPng from "./Assets/Mapicons/office.png";
 
-// Assets
-import img1 from "./Assets/img1.jpg";
-import myListings from "./Assets/Data/Dummydata";
+
 
 // Components
 
@@ -53,7 +51,7 @@ function Listings() {
     const source = Axios.CancelToken.source();
     async function GetAllListings() {
       try {
-        const response = await Axios.get('https://8000-tonnyg95-myhome-2864quj0ulx.ws-eu63.gitpod.io/api/listings/', {cancelToken: source.token})
+        const response = await Axios.get('https://8000-tonnyg95-myhome-2864quj0ulx.ws-eu64.gitpod.io/api/listings/', {cancelToken: source.token})
         setAllListings(response.data)
         setDataIsLoading(false) 
       } catch(error){

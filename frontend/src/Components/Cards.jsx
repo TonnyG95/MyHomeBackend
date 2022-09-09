@@ -16,7 +16,7 @@ function Cards() {
     const source = Axios.CancelToken.source();
     async function GetAllListings() {
       try {
-        const response = await Axios.get('https://8000-tonnyg95-myhome-2864quj0ulx.ws-eu63.gitpod.io/api/listings/', {cancelToken: source.token})
+        const response = await Axios.get('https://8000-tonnyg95-myhome-2864quj0ulx.ws-eu64.gitpod.io/api/listings/', {cancelToken: source.token})
         setAllListings(response.data)
         setDataIsLoading(false) 
       } catch(error){

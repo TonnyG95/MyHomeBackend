@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 
 from pathlib import Path
 import os
+import re
 import dj_database_url
 
 if os.path.isfile("env.py"):
@@ -34,9 +35,18 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['ci-myhome.herokuapp.com', 'localhost' ]
 
-CSRF_TRUSTED_ORIGINS=['https://8000-tonnyg95-myhome-2864quj0ulx.ws-eu63.gitpod.io']
+CSRF_TRUSTED_ORIGINS=['https://8000-tonnyg95-myhome-2864quj0ulx.ws-eu64.gitpod.io']
 
-
+if 'CLIENT_ORIGIN' in os.environ:
+    CORS_ALLOWED_ORIGINS = [
+        os.environ.get('CLIENT_ORIGIN')
+    ]
+if 'CLIENT_ORIGIN_DEV' in os.environ:
+    extracted_url = re.match(r'^.+-', os.environ.get('CLIENT_ORIGIN_DEV', ''), re.IGNORECASE).group(0)
+    CORS_ALLOWED_ORIGIN_REGEXES = [
+        rf"{extracted_url}(eu|us)\d+\w\.gitpod\.io$",
+    ]
+CORS_ALLOW_CREDENTIALS = True
 # Application definition
 
 INSTALLED_APPS = [
@@ -60,6 +70,8 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
+
+    'django.middleware.common.CommonMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -149,6 +161,8 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 MEDIA_URL = '/media/'
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
+CORS_ORIGIN_ALLOW_ALL = True
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
@@ -158,7 +172,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'users.User'
 
-CORS_ALLOW_ALL_ORIGINS = True
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
@@ -171,3 +184,8 @@ DJOSER = {
     'USER_CREATE_PASSWORD_RETYPE': True,
     'SEND_ACTIVATION_EMAIL': False
 }
+
+
+
+
+

@@ -246,7 +246,7 @@ function AddProperty() {
     useEffect(()=>{
       async function GetProfileInfo(){
         try {
-          const response = await Axios.get(`https://8000-tonnyg95-myhome-2864quj0ulx.ws-eu63.gitpod.io/api/profiles/${GlobalState.userId}`);
+          const response = await Axios.get(`https://8000-tonnyg95-myhome-2864quj0ulx.ws-eu64.gitpod.io/api/profiles/${GlobalState.userId}`);
           console.log(response.data)
           dispatch({type: 'catchUserProfileInfo', profileObject: response.data })
         } catch(e){
@@ -294,7 +294,7 @@ function AddProperty() {
                 
                 try {
 
-                    const response = await Axios.post("https://8000-tonnyg95-myhome-2864quj0ulx.ws-eu63.gitpod.io/api/listings/create/", formData);
+                    const response = await Axios.post("https://8000-tonnyg95-myhome-2864quj0ulx.ws-eu64.gitpod.io/api/listings/create/", formData);
                     console.log(response);
                     navigate('/listings')
                 } catch (e) {

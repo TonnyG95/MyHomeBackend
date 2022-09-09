@@ -17,7 +17,7 @@ function Navigation() {
 
   async function HandleLogout(){
    try {
-    const response = await Axios.post("https://8000-tonnyg95-myhome-2864quj0ulx.ws-eu63.gitpod.io/api-auth-djoser/token/logout/", GlobalState.userToken, {headers: {Authorization : 'Token '.concat(GlobalState.userToken)}})
+    const response = await Axios.post("https://8000-tonnyg95-myhome-2864quj0ulx.ws-eu64.gitpod.io/api-auth-djoser/token/logout/", GlobalState.userToken, {headers: {Authorization : 'Token '.concat(GlobalState.userToken)}})
     console.log(response)
     GlobalDispatch({ type: 'logout'})
     Navigate('/')
@@ -45,6 +45,10 @@ function Navigation() {
 
             <LinkContainer to="/listings">
               <Nav.Link> <i class="fa-solid fa-house-laptop"></i> Listings</Nav.Link>
+            </LinkContainer>
+
+            <LinkContainer to="/agencies">
+              <Nav.Link> <i class="fa-solid fa-building"></i> Agencies</Nav.Link>
             </LinkContainer>
 
 

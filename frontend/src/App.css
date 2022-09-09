@@ -80,3 +80,19 @@ h1{
   width: 200px;
   height: 200px;
 }
+
+.flexi{
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  gap: 2rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem
+}
+
+
+.flexi img {
+  width: 50%;
+  height: 50%;
+  margin: auto;
+}

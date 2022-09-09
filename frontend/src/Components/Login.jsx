@@ -63,7 +63,7 @@ function Login() {
       async function SingIn() {
         try {
           const response = await Axios.post(
-            "https://8000-tonnyg95-myhome-2864quj0ulx.ws-eu63.gitpod.io/api-auth-djoser/token/login/",
+            "https://8000-tonnyg95-myhome-2864quj0ulx.ws-eu64.gitpod.io/api-auth-djoser/token/login/",
             {
               username: state.usernameValue,
 
@@ -105,7 +105,7 @@ function Login() {
       async function GetUserInfo() {
         try {
           const response = await Axios.get(
-            "https://8000-tonnyg95-myhome-2864quj0ulx.ws-eu63.gitpod.io/api-auth-djoser/users/me/",
+            "https://8000-tonnyg95-myhome-2864quj0ulx.ws-eu64.gitpod.io/api-auth-djoser/users/me/",
             {
               headers: {Authorization : 'Token '.concat(state.token)}
             },
