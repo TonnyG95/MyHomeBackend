@@ -155,7 +155,7 @@ function AgencyDetails() {
                                 
 
 
-                            <Button variant="primary">Details</Button>
+                            <Button onClick={() => navigate(`/listings/${listing.id}`)}  variant="primary">Details</Button>
                             </Card.Body>
                             </Card>
 					);
