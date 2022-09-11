@@ -19,13 +19,16 @@ import Testing from './Components/Testing';
 import Register from './Components/Register';
 import AddProperty from './Components/AddProperty';
 import Profile from './Components/Profile';
-import Agencies from './Components/Agencies';
+import ListingDetails from './Components/ListingDetails';
+import AgencyDetails from './Components/AgencyDetails';
+
 
 
 // Context
 
 import DispatchContext from './Contexts/DispatchContext';
 import StateContext from './Contexts/StateContext';
+import Agencies from './Components/Agencies';
 
 function App() {
 
@@ -87,6 +90,8 @@ function App() {
       <Route path='/add-property' element={ <AddProperty />} />
 	  <Route path='/profile' element={ <Profile />} />
 	  <Route path='/agencies' element={ <Agencies />} />
+	  <Route path='/agencies/:id' element={ <AgencyDetails />} />
+	  <Route path='/listings/:id' element={ <ListingDetails />} />
     </Routes>
     <Footer />
     </BrowserRouter>

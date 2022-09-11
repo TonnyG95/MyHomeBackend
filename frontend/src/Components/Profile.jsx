@@ -11,6 +11,7 @@ function Profile() {
 
     const GlobalState = useContext(StateContext)
 
+    
     const navigate = useNavigate()
 
     const initialState = {
@@ -19,13 +20,16 @@ function Profile() {
           phoneNumber: '',
           profilePic: '',
           bio: '',
+          sellerId: '',
+          sellerListings: []
         },
         agencyNameValue: '',
         phoneNumberValue: '',
         bioValue: '',
         uploadedPicture: [],
         profilePictureValue: '',
-        sendRequest: 0
+        sendRequest: 0,
+        
       };
     
       function ReducerFuction(draft, action) {
@@ -36,6 +40,8 @@ function Profile() {
                 draft.userProfile.phoneNumber = action.profileObject.phone_number;
                 draft.userProfile.profilePic = action.profileObject.profile_picture;
                 draft.userProfile.bio = action.profileObject.bio
+                draft.userProfile.sellerListings = action.profileObject.seller_listings
+                draft.userProfile.sellerId = action.profileObject.seller
               break 
 
               case 'catchAgencyNameChange':
@@ -77,6 +83,18 @@ function Profile() {
         }
       },[state.uploadedPicture[0]])
 
+ 
+
+
+
+
+
+
+
+
+
+
+      // Request to get all profile info
       useEffect(()=>{
         async function GetProfileInfo(){
           try {
@@ -89,7 +107,16 @@ function Profile() {
         }
         GetProfileInfo()
       },[])
+      
 
+
+
+
+
+
+
+
+      
 
       function FormSubmit(e) {
         e.preventDefault();
@@ -126,6 +153,7 @@ function Profile() {
         }
       }, [state.sendRequest]);
 
+      
 
       function WelcomeDisplay() {
 		if (
@@ -274,7 +302,7 @@ function Profile() {
                   <h5 className='text-center my-3'>Welcome Back {GlobalState.userUsername}</h5> 
 
 
-                  <img className='rounded my-4 placeholed-image' src={ state.userProfile.profilePic} />
+                  <img className='rounded my-4 placeholed-image' src={ state.userProfile.profilePic ? state.userProfile.profilePic : 'https://res.cloudinary.com/dsq1kzjdy/image/upload/v1662651727/media/No-Image-Placeholder.svg_bgopvn.png' } />
                 
                     <h5 className='text-center m-4' >Information:</h5>
 
@@ -295,7 +323,8 @@ function Profile() {
 
                         <h6 className='text-center m-4'>{state.userProfile.agencyName}</h6>
                         <h6 className='text-center m-4'>{state.userProfile.phoneNumber}</h6>
-                        <h6 className='text-center m-4'>You have x Listings</h6>
+                        <h6 onClick={() =>navigate(`/agencies/${state.userProfile.sellerId}`)} className='text-center m-4'>{state.userProfile.sellerListings.length}</h6> 
+                        
                         
 
                         </Col>

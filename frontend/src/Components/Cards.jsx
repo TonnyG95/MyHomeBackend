@@ -1,15 +1,18 @@
 import React, {useEffect, useState} from 'react'
 import { Container, Card, Button, Spinner } from 'react-bootstrap'
 import Axios from 'axios'
+import { Link, useNavigate } from "react-router-dom";
 
 
 
 
 function Cards() {
 
+
+
   const [allListings, setAllListings] = useState([]);
   const [dataIsLoading, setDataIsLoading] = useState(true)
-  
+  const navigate = useNavigate()
   
 
   useEffect(() => {
@@ -47,11 +50,12 @@ function Cards() {
               key={listing.id}
               style={{ width: "100%", margin: "auto", color: "#212529" }}
             >
-              <Card.Img
+             <Card.Img
                 variant="top"
                 src={listing.picture1}
                 alt={listing.title}
               />
+              
               <Card.Body>
                 <Card.Title>{listing.title}</Card.Title>
                 <Card.Text>
@@ -80,7 +84,7 @@ function Cards() {
                   </Card.Text>
                 )}
 
-                <Button variant="primary">Details</Button>
+                <Button onClick={() => navigate(`/listings/${listing.id}`)} variant="primary">Details</Button>
 
                
               </Card.Body>

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Container, Row, Col, Button, Spinner } from 'react-bootstrap'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Axios from 'axios'
 
 // React Leaflet
@@ -21,7 +21,6 @@ import Cards from "./Cards";
 
 function Listings() {
 
-  // fetch('https://8000-tonnyg95-myhome-2864quj0ulx.ws-eu63.gitpod.io/api/listings/').then(response => response.json()).then(data => console.log(data))
 
 
 
@@ -46,6 +45,7 @@ function Listings() {
 
   const [allListings, setAllListings] = useState([]);
   const [dataIsLoading, setDataIsLoading] = useState(true)
+  const navigate = useNavigate()
 
   useEffect(() => {
     const source = Axios.CancelToken.source();
@@ -111,26 +111,19 @@ function Listings() {
             >
               <Popup>
                 <h5>{listing.title}</h5>
-                <img src={listing.picture1} alt={listing.title} style={{ height: "14rem", width: "18rem" }} />
+               <img src={listing.picture1} alt={listing.title} style={{ height: "14rem", width: "18rem" }}  />
                 <p>{listing.description.substring(0, 200)}...</p>
               
                 {listing.property_status === "Sale" ? (<h5>Price: {listing.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}€</h5> ) : (<h5>Price: {listing.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}€ / {listing.rental_frequency}</h5> )}
                
 
-                <Link to='/'> <Button className="btn btn-primary mb-3">Visit Property</Button> </Link>
+                <Button onClick={() => navigate(`/listings/${listing.id}`)} className="btn btn-primary mb-3">Visit Property</Button> 
               </Popup>
             </Marker>
           );
         })}
  
-         {/* <Marker position={[latitude, longitude]}>
-          <Popup>
-            <h5>Demo Property</h5>
-            <img src={img1} style={{height: '14rem', width: '18rem'}}/>
-            <p>Short description about the property</p>
-            <Button className="btn btn-primary mb-3">Visit Property</Button>
-          </Popup>
-        </Marker>  */}
+         
         
       </MapContainer>
     </div>

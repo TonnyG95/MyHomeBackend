@@ -52,7 +52,6 @@ function Navigation() {
             </LinkContainer>
 
 
-
             <LinkContainer to="/add-property">
               <Nav.Link> <i class="fa-solid fa-house-medical"></i> Add Property</Nav.Link>
             </LinkContainer>

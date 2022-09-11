@@ -81,18 +81,26 @@ h1{
   height: 200px;
 }
 
-.flexi{
-  display: flex;
-  justify-content: center;
-  flex-direction: row;
-  gap: 2rem;
-  margin-top: 2rem;
-  margin-bottom: 2rem
+.listings-scroll{
+  max-height: 90vh;
+  overflow-y: scroll;
 }
 
-
-.flexi img {
-  width: 50%;
-  height: 50%;
+.listing-img {
+  width: 70%;
+  height: 70%;
   margin: auto;
+  border-radius: 2rem;
+}
+
+.listing-box{
+  box-shadow: 2rem rgb(238, 238, 238);
+  padding: 3rem;
+  border-radius: 2rem;
+  border: 0.3rem solid rgb(238, 238, 238);
+  margin: 2rem
+}
+
+.listing-box:hover{
+  background-color: rgb(250, 250, 250);;
 }
