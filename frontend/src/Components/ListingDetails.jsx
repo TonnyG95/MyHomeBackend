@@ -14,6 +14,12 @@ import Axios from "axios";
 // Contexts
 import StateContext from "../Contexts/StateContext";
 
+// React Leaflet
+import { MapContainer, TileLayer, useMap, Marker, Popup } from "react-leaflet";
+import { Icon } from "leaflet";
+
+
+
 
 
 function ListingDetails() {
@@ -46,6 +52,11 @@ function ListingDetails() {
           break;
     }
   }
+
+  
+
+
+
 
   const [state, dispatch] = useImmerReducer(ReducerFuction, initialState);
 
@@ -303,7 +314,37 @@ function ListingDetails() {
           </h6>
 
 
+          <Row className="map-box">
+            
+            <h5>Map</h5>
+
+            
           
+          <MapContainer
+						center={[state.listingInfo.latitude, state.listingInfo.longitude]}
+            className='m-3 map-box'
+						zoom={14}
+						scrollWheelZoom={true}
+            style={{height: '50rem', width: '100%', margin: 'auto'}}
+					>
+						<TileLayer
+							attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+							url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+						/>
+						<Marker
+							position={[
+								state.listingInfo.latitude,
+								state.listingInfo.longitude,
+							]}
+						>
+							<Popup>{state.listingInfo.title}</Popup>
+						</Marker>
+						
+					</MapContainer>
+
+
+
+          </Row>
 
           
         </Col>
