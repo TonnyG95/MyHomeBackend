@@ -1,12 +1,5 @@
 import React, { useEffect, useState, useContext } from "react";
-import {
-  Row,
-  Col,
-  Button,
-  Container,
-  Spinner,
-
-} from "react-bootstrap";
+import { Row, Col, Button, Container, Spinner, Modal, Form } from "react-bootstrap";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { useImmerReducer } from "use-immer";
 import Axios from "axios";
@@ -14,19 +7,30 @@ import Axios from "axios";
 // Contexts
 import StateContext from "../Contexts/StateContext";
 
+
+// Component
+
+import ListingUpdate from "./ListingUpdate";
+
+
+
+
 // React Leaflet
 import { MapContainer, TileLayer, useMap, Marker, Popup } from "react-leaflet";
 import { Icon } from "leaflet";
 
-
-
-
-
 function ListingDetails() {
-
-
   const navigate = useNavigate();
   const GlobalState = useContext(StateContext);
+
+  // Modal 
+
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
+  // Modal End
 
   const params = useParams();
 
@@ -47,16 +51,11 @@ function ListingDetails() {
         draft.dataIsLoading = false;
         break;
 
-        case "catchSellerProfileInfo":
-          draft.sellerProfileInfo = action.profileObject;
-          break;
+      case "catchSellerProfileInfo":
+        draft.sellerProfileInfo = action.profileObject;
+        break;
     }
   }
-
-  
-
-
-
 
   const [state, dispatch] = useImmerReducer(ReducerFuction, initialState);
 
@@ -71,36 +70,31 @@ function ListingDetails() {
           type: "catchListingInfo",
           listingObject: response.data,
         });
-        
       } catch (e) {}
     }
     GetPListingInfo();
   }, []);
 
-
   // Get User Info
 
   useEffect(() => {
-		if (state.listingInfo) {
-			async function GetProfileInfo() {
-				try {
-					const response = await Axios.get(
-						`https://8000-tonnyg95-myhome-2864quj0ulx.ws-eu64.gitpod.io/api/profiles/${state.listingInfo.seller}/`
-					);
+    if (state.listingInfo) {
+      async function GetProfileInfo() {
+        try {
+          const response = await Axios.get(
+            `https://8000-tonnyg95-myhome-2864quj0ulx.ws-eu64.gitpod.io/api/profiles/${state.listingInfo.seller}/`
+          );
 
-					dispatch({
-						type: "catchSellerProfileInfo",
-						profileObject: response.data,
-					});
-					dispatch({ type: "loadingDone" });
-				} catch (e) {}
-			}
-			GetProfileInfo();
-		}
-	}, [state.listingInfo]);
-
-
-  
+          dispatch({
+            type: "catchSellerProfileInfo",
+            profileObject: response.data,
+          });
+          dispatch({ type: "loadingDone" });
+        } catch (e) {}
+      }
+      GetProfileInfo();
+    }
+  }, [state.listingInfo]);
 
   const listingPictures = [
     state.listingInfo.picture1,
@@ -108,38 +102,51 @@ function ListingDetails() {
     state.listingInfo.picture3,
     state.listingInfo.picture4,
     state.listingInfo.picture5,
-  ].filter((picture)=> picture !== null);
+  ].filter((picture) => picture !== null);
 
   const [currentPicture, setCurrentPicture] = useState(0);
 
   function NextPicture() {
-		if (currentPicture === listingPictures.length - 1) {
-			return setCurrentPicture(0);
-		} else {
-			return setCurrentPicture(currentPicture + 1);
-		}
-	}
+    if (currentPicture === listingPictures.length - 1) {
+      return setCurrentPicture(0);
+    } else {
+      return setCurrentPicture(currentPicture + 1);
+    }
+  }
 
-	function PreviousPicture() {
-		if (currentPicture === 0) {
-			return setCurrentPicture(listingPictures.length - 1);
-		} else {
-			return setCurrentPicture(currentPicture - 1);
-		}
-	}
+  function PreviousPicture() {
+    if (currentPicture === 0) {
+      return setCurrentPicture(listingPictures.length - 1);
+    } else {
+      return setCurrentPicture(currentPicture - 1);
+    }
+  }
 
   const date = new Date(state.listingInfo.date_posted);
-	const formattedDate = `${
-		date.getDate() + 1
-	}/${date.getMonth()}/${date.getFullYear()}`;
+  const formattedDate = `${
+    date.getDate() + 1
+  }/${date.getMonth()}/${date.getFullYear()}`;
 
+
+  async function DeleteHandler(){
+    const confirmDelete = window.confirm('Are you sure you want to delete this listing?')
+    if (confirmDelete){
+      try {
+        const response = await Axios.delete(`https://8000-tonnyg95-myhome-2864quj0ulx.ws-eu64.gitpod.io/api/listings/${params.id}/delete/`)
+        console.log(response.data)
+        navigate('/listings')
+      } catch(e){
+        console.log(e.response.data)
+      }
+    }
+  }
 
   if (state.dataIsLoading === true) {
-      return (
-        <div className="container text-center my-5 p-4">
-          <Spinner animation="border" />
-        </div>
-      );
+    return (
+      <div className="container text-center my-5 p-4">
+        <Spinner animation="border" />
+      </div>
+    );
   }
 
   return (
@@ -215,6 +222,67 @@ function ListingDetails() {
           lg={7}
           xl={7}
         >
+          <Row>
+            <Col></Col>
+
+            <Col xs={12} sm={12} md={4} lg={4} xl={4}>
+              {GlobalState.userId == state.listingInfo.seller ? (
+                <h6 className="m-3 text-center">
+                  This is your listing so you can edit or delete it{" "}
+                </h6>
+              ) : (
+                ""
+              )}
+            </Col>
+            <Col xs={12} sm={12} md={5} lg={5} xl={5}>
+              {GlobalState.userId == state.listingInfo.seller ? (
+                <div style={{display: 'flex'}}>
+                  <Button onClick={handleShow} className="btn btn-primary m-2">
+                    Edit <i class="bi bi-pencil-square"></i>
+                  </Button>
+
+                {/* Modal */}
+                <div className="popup">
+
+                  <>
+
+                    <Modal dialogClassName="modal-90w" show={show} onHide={handleClose}>
+                      <ListingUpdate listingData ={state.listingInfo} />
+                    </Modal>
+                  </>
+
+
+
+
+
+
+
+                </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                  <Button onClick={DeleteHandler} className="btn btn-danger m-2">
+                    Delete <i class="bi bi-trash3"></i>
+                  </Button>
+                </div>
+              ) : (
+                ""
+              )}
+            </Col>
+          </Row>
           <h1 className="my-4 text-muted">{state.listingInfo.title}</h1>
 
           {listingPictures.map((picture, index) => {
@@ -313,40 +381,30 @@ function ListingDetails() {
             {state.listingInfo.description}
           </h6>
 
-
           <Row className="map-box">
-            
             <h5>Map</h5>
 
-            
-          
-          <MapContainer
-						center={[state.listingInfo.latitude, state.listingInfo.longitude]}
-            className='m-3 map-box'
-						zoom={14}
-						scrollWheelZoom={true}
-            style={{height: '50rem', width: '100%', margin: 'auto'}}
-					>
-						<TileLayer
-							attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-							url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-						/>
-						<Marker
-							position={[
-								state.listingInfo.latitude,
-								state.listingInfo.longitude,
-							]}
-						>
-							<Popup>{state.listingInfo.title}</Popup>
-						</Marker>
-						
-					</MapContainer>
-
-
-
+            <MapContainer
+              center={[state.listingInfo.latitude, state.listingInfo.longitude]}
+              className="m-3 map-box"
+              zoom={14}
+              scrollWheelZoom={true}
+              style={{ height: "50rem", width: "100%", margin: "auto" }}
+            >
+              <TileLayer
+                attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+              />
+              <Marker
+                position={[
+                  state.listingInfo.latitude,
+                  state.listingInfo.longitude,
+                ]}
+              >
+                <Popup>{state.listingInfo.title}</Popup>
+              </Marker>
+            </MapContainer>
           </Row>
-
-          
         </Col>
       </Row>
     </div>
