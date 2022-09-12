@@ -3,10 +3,16 @@ import { Row, Col, Button, Form } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import Axios from "axios";
 import { useImmerReducer } from "use-immer";
+import { ToastContainer, toast } from 'react-toastify';
 
 function Register() {
 
   const navigate = useNavigate()
+
+  function AccCreated(props) {
+    toast.success(props)
+   
+  }
 
 
   const initialState = {
@@ -70,6 +76,9 @@ function Register() {
         }
       }
       SingUp();
+      
+      AccCreated('Account Created, You can now log in')
+
       return () => {
         source.cancel();
       };

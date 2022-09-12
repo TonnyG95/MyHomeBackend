@@ -3,6 +3,12 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import './App.css';
 import { useImmerReducer } from "use-immer";
 
+
+// Toastify
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+
 // React Leaflet
 import { MapContainer, TileLayer, useMap, Marker, Popup } from "react-leaflet";
 import { Icon } from "leaflet";
@@ -32,6 +38,7 @@ import Agencies from './Components/Agencies';
 
 function App() {
 
+	
 
   const initialState = {
 		userUsername: localStorage.getItem("theUserUsername"),
@@ -93,6 +100,7 @@ function App() {
 	  <Route path='/agencies/:id' element={ <AgencyDetails />} />
 	  <Route path='/listings/:id' element={ <ListingDetails />} />
     </Routes>
+	<ToastContainer />
     <Footer />
     </BrowserRouter>
     </DispatchContext.Provider>

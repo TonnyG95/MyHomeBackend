@@ -5,10 +5,20 @@ import { Link, useNavigate } from "react-router-dom";
 import { useImmerReducer } from "use-immer";
 import Axios from 'axios';
 
+// Toastify
+
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 // Contexts
  import StateContext from "../Contexts/StateContext";
 
 function AddProperty() {
+
+  function PropertyAdded(props) {
+    toast.success(props)
+     
+    }
 
     const GlobalState = useContext(StateContext)
 
@@ -304,6 +314,8 @@ function AddProperty() {
             }
 
             AddProperty();
+
+            PropertyAdded('Property Added')
         }
       }, [state.sendRequest]);
 

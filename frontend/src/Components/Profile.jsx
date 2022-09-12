@@ -3,11 +3,17 @@ import { Row, Col, Button, Form, Container } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import { useImmerReducer } from "use-immer";
 import Axios from 'axios';
+import { ToastContainer, toast } from 'react-toastify';
 
 // Contexts
 import StateContext from "../Contexts/StateContext";
 
 function Profile() {
+
+  function profileUpdatedMessage(props) {
+    toast.success(props)
+     
+    }
 
     const GlobalState = useContext(StateContext)
 
@@ -142,7 +148,8 @@ function Profile() {
 
                     const response = await Axios.patch(`https://8000-tonnyg95-myhome-2864quj0ulx.ws-eu64.gitpod.io/api/profiles/${GlobalState.userId}/update/`, formData);
                     console.log(response);
-                    navigate('/listings')
+                    navigate(0)
+                    
                 } catch (e) {
                     console.log(e.response);
                 }
@@ -150,6 +157,7 @@ function Profile() {
             }
 
             UpdateProfile();
+            profileUpdatedMessage('Profile Updated')
         }
       }, [state.sendRequest]);
 

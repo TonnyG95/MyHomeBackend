@@ -4,6 +4,8 @@ import { Row, Col, Button, Form, Container } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import { useImmerReducer } from "use-immer";
 import Axios from 'axios';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 // Contexts
  import StateContext from "../Contexts/StateContext";
@@ -13,6 +15,8 @@ import Axios from 'axios';
  function ListingUpdate(props) {
 	const navigate = useNavigate();
 	const GlobalState = useContext(StateContext);
+
+ 
 
 	const initialState = {
 		titleValue: props.listingData.title,
@@ -136,6 +140,7 @@ import Axios from 'axios';
 				}
 			}
 			UpdateProperty();
+    
 		}
 	}, [state.sendRequest]);
       

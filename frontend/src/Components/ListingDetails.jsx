@@ -225,7 +225,7 @@ function ListingDetails() {
           <Row>
             <Col></Col>
 
-            <Col xs={12} sm={12} md={4} lg={4} xl={4}>
+            <Col xs={12} sm={12} md={5} lg={5} xl={5}>
               {GlobalState.userId == state.listingInfo.seller ? (
                 <h6 className="m-3 text-center">
                   This is your listing so you can edit or delete it{" "}
@@ -234,9 +234,9 @@ function ListingDetails() {
                 ""
               )}
             </Col>
-            <Col xs={12} sm={12} md={5} lg={5} xl={5}>
+            <Col xs={12} sm={12} md={4} lg={4} xl={4}>
               {GlobalState.userId == state.listingInfo.seller ? (
-                <div style={{display: 'flex'}}>
+                <div>
                   <Button onClick={handleShow} className="btn btn-primary m-2">
                     Edit <i class="bi bi-pencil-square"></i>
                   </Button>
@@ -246,7 +246,7 @@ function ListingDetails() {
 
                   <>
 
-                    <Modal dialogClassName="modal-90w" show={show} onHide={handleClose}>
+                    <Modal show={show} onHide={handleClose}>
                       <ListingUpdate listingData ={state.listingInfo} />
                     </Modal>
                   </>

@@ -1,21 +1,38 @@
 /* eslint-disable default-case */
-import React, {useEffect, useContext} from "react";
+import React, {useEffect, useContext, useState} from "react";
 import Axios from 'axios';
-import { Row, Col, Button, Form } from "react-bootstrap";
+import { Row, Col, Button, Form, Alert } from "react-bootstrap";
 import { Link, useNavigate  } from "react-router-dom";
 import { useImmerReducer } from "use-immer";
+
+// React Tostify
+
+import {ToastContainer, toast} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 // Contexts
  import DispatchContext from "../Contexts/DispatchContext";
  import StateContext from "../Contexts/StateContext";
 
 
+
+
 function Login() {
+
+ 
+  function loggedin(props) {
+    toast.success(props)
+   
+  }
+  
 
   const GlobalDispatch = useContext(DispatchContext)
   const GlobalState = useContext(StateContext)
 
   const navigate = useNavigate()
+
+
+  
 
   const initialState = {
 		usernameValue: "",
@@ -90,7 +107,9 @@ function Login() {
       SingIn();
       return () => {
         source.cancel();
+        
       };
+      
     }
   }, [state.sendRequest]);
 
@@ -114,7 +133,8 @@ function Login() {
 
           console.log(response);
           GlobalDispatch({type: 'userSignsIn', usernameInfo: response.data.username, emailInfo: response.data.email, IdInfo: response.data.id });
-          navigate('/')
+          navigate('/');
+          loggedin('You are logged in')
         } catch (error) {
           console.log(error.response);
         }
@@ -122,6 +142,7 @@ function Login() {
       GetUserInfo();
       return () => {
         source.cancel();
+        
       };
     }
   }, [state.sendRequest]);
@@ -165,6 +186,10 @@ function Login() {
           </Link>
           
         </Form>
+
+        
+
+       
         
       </Col>
     </Row>

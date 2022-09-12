@@ -5,10 +5,20 @@ import { LinkContainer } from 'react-router-bootstrap';
 import { Link, Navigate } from "react-router-dom";
 import Axios from 'axios';
 
+
+// Toastify
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 // Contexts 
 import StateContext from '../Contexts/StateContext';
 import DispatchContext from '../Contexts/DispatchContext';
 
+
+function loggedout(props) {
+  toast.error(props)
+   
+  }
 
 
 function Navigation() {
@@ -24,6 +34,7 @@ function Navigation() {
    } catch(e){
     console.log(e.response)
    }
+   loggedout('You are logged out')
   }
 
   return (
