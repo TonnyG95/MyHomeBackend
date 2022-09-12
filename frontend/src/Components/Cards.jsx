@@ -54,6 +54,7 @@ function Cards() {
                 variant="top"
                 src={listing.picture1}
                 alt={listing.title}
+                className='rounded'
               />
               
               <Card.Body>

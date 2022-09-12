@@ -24,6 +24,11 @@ function Login() {
     toast.success(props)
    
   }
+
+  function WrongLogin(props) {
+    toast.error(props)
+   
+  }
   
 
   const GlobalDispatch = useContext(DispatchContext)

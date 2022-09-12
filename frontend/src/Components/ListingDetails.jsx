@@ -306,7 +306,7 @@ function ListingDetails() {
               {" "}
               <i class="slider-icons mx-2 w-25 h-25 fa-solid fa-circle-arrow-left"></i>
             </span>
-            Picture: {currentPicture}
+            Picture: {currentPicture + 1}
             <span onClick={NextPicture}>
               {" "}
               <i class="slider-icons mx-2 w-25 h-25 fa-solid fa-circle-arrow-right"></i>
