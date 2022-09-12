@@ -2,7 +2,7 @@ import React, {useState, useContext} from 'react';
 import Button from 'react-bootstrap/Button';
 import { Navbar, Nav, Container, Row, NavDropdown  } from 'react-bootstrap'
 import { LinkContainer } from 'react-router-bootstrap';
-import { Link, Navigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Axios from 'axios';
 
 
@@ -24,13 +24,14 @@ function loggedout(props) {
 function Navigation() {
   const GlobalState = useContext(StateContext)
   const GlobalDispatch = useContext(DispatchContext)
+  const navigate = useNavigate()
 
   async function HandleLogout(){
    try {
     const response = await Axios.post("https://8000-tonnyg95-myhome-2864quj0ulx.ws-eu64.gitpod.io/api-auth-djoser/token/logout/", GlobalState.userToken, {headers: {Authorization : 'Token '.concat(GlobalState.userToken)}})
     console.log(response)
     GlobalDispatch({ type: 'logout'})
-    Navigate('/')
+    navigate(0)
    } catch(e){
     console.log(e.response)
    }
