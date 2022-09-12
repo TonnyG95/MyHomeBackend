@@ -77,8 +77,10 @@ h1{
 }
 
 .placeholed-image{
-  width: 200px;
-  height: 200px;
+  width: 250px;
+  height: 250px;
+  margin: auto;
+  padding: 3rem;
 }
 
 .listings-scroll{
@@ -103,4 +105,13 @@ h1{
 
 .listing-box:hover{
   background-color: rgb(250, 250, 250);;
+}
+
+.flex-cards{
+  display: flex;
+}
+
+.slider-icon{
+  width: 5rem;
+  height: 5rem;
 }

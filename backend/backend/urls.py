@@ -20,8 +20,11 @@ from users.api import views as users_api_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+
+
     path('api/listings/', listings_api_views.ListingList.as_view()),
     path('api/listings/create/', listings_api_views.ListingCreate.as_view()),
+    path('api/listings/<int:pk>/', listings_api_views.ListingDetails.as_view()),
 
     path('api/profiles/', users_api_views.ProfileList.as_view()),
     path('api/profiles/<int:seller>/', users_api_views.ProfileDetail.as_view()),

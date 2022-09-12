@@ -1,5 +1,5 @@
 import React, {useEffect, useState, useContext} from 'react'
-import { Row, Col, Button, Form, Container, Card } from "react-bootstrap";
+import { Row, Col, Button, Form, Container, Card, Spinner } from "react-bootstrap";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { useImmerReducer } from "use-immer";
 import Axios from 'axios';
@@ -63,6 +63,12 @@ function AgencyDetails() {
 		}
 		GetProfileInfo();
 	}, []);
+
+
+  if (state.dataIsLoading === true ){
+    return  <div className="container text-center my-5 p-4"> <Spinner animation="border" /></div>;
+  }
+
 
 
 
