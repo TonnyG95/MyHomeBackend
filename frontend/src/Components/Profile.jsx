@@ -331,7 +331,7 @@ function Profile() {
                     </Row>
 
                     <Row>
-                    <h6 className='text-center my-4'>About you:</h6>
+                    <h6 className='text-center my-4'>About Agency:</h6>
                     </Row>
 
                     <Row>

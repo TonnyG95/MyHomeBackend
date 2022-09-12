@@ -115,3 +115,35 @@ h1{
   width: 5rem;
   height: 5rem;
 }
+
+.slider-icons{
+  font-size: 2.5rem;
+  margin: 2rem;
+  color: #222529
+}
+
+.slider-icons:hover{
+  color: #007ffd;
+}
+
+.box-content{
+  box-shadow: 2rem rgb(238, 238, 238);
+  padding: 3rem;
+  border-radius: 2rem;
+  border: 0.3rem solid rgb(238, 238, 238);
+  margin: 2rem;
+  background-color: #f5f5f5
+}
+
+.feature-icon{
+  font-size: 1.5rem;
+  color: #222529
+}
+
+.navigate-link{
+  cursor: pointer;
+}
+
+.navigate-link:hover{
+  color: #007ffd;
+}
