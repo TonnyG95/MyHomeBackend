@@ -22,6 +22,7 @@ from django.views.generic import TemplateView
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', TemplateView.as_view(template_name='index.html')),
+  
 
     path('api/listings/', listings_api_views.ListingList.as_view()),
     path('api/listings/create/', listings_api_views.ListingCreate.as_view()),
