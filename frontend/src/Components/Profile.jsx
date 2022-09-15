@@ -237,6 +237,7 @@ function Profile() {
                       <Form.Group className="mb-5 mt-5" controlId="formBasicEmail">
                       <Form.Label>Agency Name*</Form.Label>
                         <Form.Control
+                          required
                           type="text"
                           placeholder="Enter your agency name"
                           value={state.agencyName}
@@ -248,7 +249,7 @@ function Profile() {
                       <Form.Group className="mb-3" controlId="formBasicEmail"> 
                       <Form.Label >Phone Number*</Form.Label>
                         <Form.Control
-                          
+                          required
                           type="text"
                           placeholder="Enter your phone number"
                           value={state.phoneNumberValue}
@@ -259,6 +260,7 @@ function Profile() {
                       <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
                       <Form.Label>Bio</Form.Label>
                             <Form.Control as="textarea" rows={3} 
+                            required
                             placeholder="Tell us something about your agency"
                             value={state.bioValue}
                             onChange={(e) =>
@@ -271,7 +273,8 @@ function Profile() {
             
                       <Form.Group controlId="formFileMultiple" className="mt-3">
                         <Form.Label>Upload Profile Picture</Form.Label>
-                        <Form.Control 
+                        <Form.Control
+                        required 
                         type="file"  
                         accept='image/png, image/jpeg' 
                         onChange={(e)=> dispatch({type: 'catchUploadedPicture', PictureChosen: e.target.files})}/>
@@ -368,6 +371,7 @@ function Profile() {
                       <Form.Group className="mb-5 mt-5" controlId="formBasicEmail">
                       <Form.Label>Agency Name*</Form.Label>
                         <Form.Control
+                          required
                           type="text"
                           placeholder="Enter your agency name"
                           value={state.agencyName}
@@ -379,7 +383,7 @@ function Profile() {
                       <Form.Group className="mb-3" controlId="formBasicEmail"> 
                       <Form.Label >Phone Number*</Form.Label>
                         <Form.Control
-                          
+                          required
                           type="text"
                           placeholder="Enter your phone number"
                           value={state.phoneNumberValue}
@@ -391,6 +395,7 @@ function Profile() {
                       <Form.Label>Bio</Form.Label>
                             <Form.Control as="textarea" rows={3} 
                             placeholder="Tell us something about your agency"
+                            required
                             value={state.bioValue}
                             onChange={(e) =>
                               dispatch({
@@ -403,6 +408,7 @@ function Profile() {
                       <Form.Group controlId="formFileMultiple" className="mt-3">
                         <Form.Label>Upload Profile Picture</Form.Label>
                         <Form.Control 
+                        required
                         type="file"  
                         accept='image/png, image/jpeg' 
                         onChange={(e)=> dispatch({type: 'catchUploadedPicture', PictureChosen: e.target.files})}/>

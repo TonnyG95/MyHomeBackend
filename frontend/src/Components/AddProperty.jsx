@@ -337,6 +337,7 @@ function AddProperty() {
               <Form.Group className="mb-3" controlId="formBasic">
                 <Form.Label>Title</Form.Label>
                 <Form.Control
+                  required
                   type="text"
                   placeholder="Enter Title"
                   value={state.titleValue}
@@ -346,12 +347,14 @@ function AddProperty() {
                       titleChosen: e.target.value,
                     })
                   }
+                  
                 />
               </Form.Group>
 
               <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
                 <Form.Label>Description</Form.Label>
-                <Form.Control as="textarea" rows={3} 
+                <Form.Control as="textarea" rows={3}
+                required 
                 placeholder="Add description"
                 value={state.descriptionValue}
                 onChange={(e) =>
@@ -366,6 +369,7 @@ function AddProperty() {
                 <Form.Group className="mb-3" controlId="formBasic">
                 <Form.Label>Town</Form.Label>
                 <Form.Control
+                  required
                   type="text"
                   placeholder="Enter Town"
                   value={state.townValue}
@@ -382,6 +386,7 @@ function AddProperty() {
               <Form.Group className="mb-3" controlId="formBasic">
                 <Form.Label>Latitude</Form.Label>
                 <Form.Control
+                  required
                   type="text"
                   placeholder="Enter Latitude"
                   value={state.latitudeValue}
@@ -397,6 +402,7 @@ function AddProperty() {
               <Form.Group className="mb-3" controlId="formBasic">
                 <Form.Label>Longitude</Form.Label>
                 <Form.Control
+                  required
                   type="text"
                   placeholder="Enter Longitude"
                   value={state.longitudeValue}
@@ -414,6 +420,7 @@ function AddProperty() {
               <Form.Group className="mb-3" controlId="formBasic">
                 <Form.Label>Price</Form.Label>
                 <Form.Control
+                  required
                   type="text"
                   placeholder="Enter Price in €"
                   value={state.priceValue}
@@ -432,6 +439,7 @@ function AddProperty() {
               <Form.Group className="mb-3" controlId="formBasic">
                 <Form.Label>Rooms</Form.Label>
                 <Form.Control
+                  required
                   type="text"
                   placeholder="Enter number of rooms"
                   value={state.roomsValue}
@@ -451,6 +459,7 @@ function AddProperty() {
             
             <Form.Label>Listing Type</Form.Label>
             <Form.Select className="mb-3" size="md"
+            required
             value={state.listingTypeValue}
             onChange={(e) =>
               dispatch({
@@ -468,6 +477,7 @@ function AddProperty() {
 
             <Form.Label >Area</Form.Label>
             <Form.Select className="mb-3" size="md"
+            required
             value={state.areaValue}
             onChange={(e) =>
               dispatch({
@@ -483,6 +493,7 @@ function AddProperty() {
 
             <Form.Label >Property Status</Form.Label>
             <Form.Select className="mb-3" size="md"
+            required
             value={state.propertyStatusValue}
             onChange={(e) =>
             dispatch({
@@ -577,6 +588,7 @@ function AddProperty() {
             <Form.Group controlId="formFileMultiple" className="mt-3">
             <Form.Label>Upload images (Max 5 Images)</Form.Label>
             <Form.Control 
+            required
             type="file" 
             multiple 
             accept='image/png, image/jpeg' 
