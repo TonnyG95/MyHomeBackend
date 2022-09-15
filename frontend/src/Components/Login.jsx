@@ -44,6 +44,7 @@ function Login() {
 		passwordValue: "",
 		sendRequest: 0,
 		token: "",
+    serverError: false
 		
 	};
 
@@ -66,6 +67,10 @@ function Login() {
 
 			case "catchToken":
 				draft.token = action.tokenValue;
+				break;
+
+      case "catchServerError":
+				draft.serverError = true
 				break;
       }
 			
@@ -106,7 +111,8 @@ function Login() {
           })
 
         } catch (error) {
-          console.log(error.response);
+          dispatch({type: 'catchServerError'})
+          WrongLogin('We cannot find the user with this e-mail or password')
           
         }
       }
@@ -163,6 +169,8 @@ function Login() {
       <Col className="my-4" xs={12} md={9} lg={9} xl={9}>
         <Form onSubmit={FormSubmit} className="px-5 box bg-light">
           <h1 className="m-4">Login</h1>
+
+
           <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Label>Username</Form.Label>
             <Form.Control
@@ -171,13 +179,16 @@ function Login() {
               placeholder="Enter your username"
               value={state.usernameValue}
               onChange={(e) => dispatch({type: 'catchUsernameChange', usernameChosen: e.target.value})}
+              error = {state.serverError ? true : false}
             />
           </Form.Group>
 
           <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Label>Password</Form.Label>
             <Form.Control placeholder="Enter Password" value={state.passwordValue}
-              onChange={(e) => dispatch({type: 'catchPasswordChange', passwordChosen: e.target.value})} type="password" />
+              onChange={(e) => dispatch({type: 'catchPasswordChange', passwordChosen: e.target.value})} type="password" 
+              error = {state.serverError ? true : false}
+              />
             <Form.Text className="text-muted">Enter your password</Form.Text>
           </Form.Group>
 
