@@ -90,7 +90,7 @@ function Login() {
       async function SingIn() {
         try {
           const response = await Axios.post(
-            "https://8000-tonnyg95-myhome-2864quj0ulx.ws-eu64.gitpod.io/api-auth-djoser/token/login/",
+            "/api-auth-djoser/token/login/",
             {
               username: state.usernameValue,
 
@@ -110,10 +110,10 @@ function Login() {
             tokenValue: response.data.auth_token,
           })
 
+
         } catch (error) {
           dispatch({type: 'catchServerError'})
           WrongLogin('We cannot find the user with this e-mail or password')
-          
         }
       }
       SingIn();
@@ -136,7 +136,7 @@ function Login() {
       async function GetUserInfo() {
         try {
           const response = await Axios.get(
-            "https://8000-tonnyg95-myhome-2864quj0ulx.ws-eu64.gitpod.io/api-auth-djoser/users/me/",
+            "/api-auth-djoser/users/me/",
             {
               headers: {Authorization : 'Token '.concat(state.token)}
             },

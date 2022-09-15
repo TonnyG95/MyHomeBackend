@@ -8,11 +8,7 @@ import Axios from 'axios'
 import { MapContainer, TileLayer, useMap, Marker, Popup } from "react-leaflet";
 import { Icon } from "leaflet";
 
-// Map Icons
 
-import houseIconPng from "./Assets/Mapicons/house.png";
-import apartmentIconPng from "./Assets/Mapicons/apartment.png";
-import officeIconPng from "./Assets/Mapicons/office.png";
 
 
 
@@ -26,17 +22,17 @@ function Listings() {
 
 
   const houseIcon = new Icon({
-		iconUrl: houseIconPng,
+		iconUrl: 'https://res.cloudinary.com/dsq1kzjdy/image/upload/v1663259061/media/house_hinzfe.png',
 		iconSize: [40, 40],
 	});
 
 	const apartmentIcon = new Icon({
-		iconUrl: apartmentIconPng,
+		iconUrl: 'https://res.cloudinary.com/dsq1kzjdy/image/upload/v1663259061/media/apartment_r0cksx.png',
 		iconSize: [40, 40],
 	});
 
 	const officeIcon = new Icon({
-		iconUrl: officeIconPng,
+		iconUrl: 'https://res.cloudinary.com/dsq1kzjdy/image/upload/v1663259061/media/office_uaxcqe.png',
 		iconSize: [40, 40],
 	});
   
@@ -52,7 +48,7 @@ function Listings() {
     const source = Axios.CancelToken.source();
     async function GetAllListings() {
       try {
-        const response = await Axios.get('https://8000-tonnyg95-myhome-2864quj0ulx.ws-eu64.gitpod.io/api/listings/', {cancelToken: source.token})
+        const response = await Axios.get('/api/listings/', {cancelToken: source.token})
         setAllListings(response.data)
         setDataIsLoading(false) 
       } catch(error){

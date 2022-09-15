@@ -15,7 +15,7 @@ import StateContext from '../Contexts/StateContext';
 import DispatchContext from '../Contexts/DispatchContext';
 
 
-function loggedout(props) {
+function LoggedOut(props) {
   toast.error(props)
    
   }
@@ -28,16 +28,21 @@ function Navigation() {
 
   async function HandleLogout(){
    try {
-    const response = await Axios.post("https://8000-tonnyg95-myhome-2864quj0ulx.ws-eu64.gitpod.io/api-auth-djoser/token/logout/", GlobalState.userToken, {headers: {Authorization : 'Token '.concat(GlobalState.userToken)}})
+    const response = await Axios.post("/api-auth-djoser/token/logout/", GlobalState.userToken, {headers: {Authorization : 'Token '.concat(GlobalState.userToken)}})
     console.log(response)
+    
+    
     GlobalDispatch({ type: 'logout'})
     navigate(0)
+    LoggedOut('You are logged out')
    } catch(e){
     console.log(e.response)
    }
-   loggedout('You are logged out')
   }
+ 
+  
 
+  
   return (
     <Navbar bg="dark" className=" p-4 "variant="dark" expand="lg" collapseOnSelect>
       <Container fluid>

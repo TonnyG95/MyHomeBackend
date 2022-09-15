@@ -131,7 +131,7 @@ function Register() {
       async function SingUp() {
         try {
           const response = await Axios.post(
-            "https://8000-tonnyg95-myhome-2864quj0ulx.ws-eu64.gitpod.io/api-auth-djoser/users/",
+            "/api-auth-djoser/users/",
             {
               username: state.usernameValue,
               email: state.emailValue,

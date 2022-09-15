@@ -129,7 +129,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 				try {
 					const response = await Axios.patch(
-						`https://8000-tonnyg95-myhome-2864quj0ulx.ws-eu64.gitpod.io/api/listings/${props.listingData.id}/update/`,
+						`/api/listings/${props.listingData.id}/update/`,
 						formData
 					);
 
@@ -159,6 +159,7 @@ import 'react-toastify/dist/ReactToastify.css';
               <Form.Group className="mb-3" controlId="formBasic">
                 <Form.Label>Title</Form.Label>
                 <Form.Control
+                
                   type="text"
                   placeholder="Enter Title"
                   value={state.titleValue}

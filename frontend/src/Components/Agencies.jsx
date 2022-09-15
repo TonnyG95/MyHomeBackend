@@ -41,7 +41,7 @@ function Agencies() {
       useEffect(()=>{
         async function GetAgencies(){
           try {
-            const response = await Axios.get(`https://8000-tonnyg95-myhome-2864quj0ulx.ws-eu64.gitpod.io/api/profiles/`);
+            const response = await Axios.get(`/api/profiles/`);
             console.log(response.data);
             dispatch({type: 'catchAgencies', agenciesArray: response.data });
             dispatch({type: "loadingDone"});

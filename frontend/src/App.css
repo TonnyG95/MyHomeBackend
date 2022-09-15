@@ -21,8 +21,27 @@
   margin-right: auto;
 }
 
+html{
+  background-color: #222529;
+}
 
 
+.hero-img{
+  background-image: url("https://res.cloudinary.com/dsq1kzjdy/image/upload/v1663255159/media/hero_t0qax1.jpg");
+  width: 100vw;
+  height: 90vh;
+  background-position: center; 
+  background-repeat: no-repeat; 
+  background-size: cover; 
+}
+
+.hero-text{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width:100%;
+  margin-top: 25%;
+}
 
 .login-form{
   margin: auto;
@@ -156,4 +175,11 @@ h1{
 .navigate-link:hover{
   color: #007ffd;
 }
+
+.social-icon{
+  font-size: 2rem;
+  margin: 1rem
+}
+
+
 

@@ -63,7 +63,7 @@ function ListingDetails() {
     async function GetPListingInfo() {
       try {
         const response = await Axios.get(
-          `https://8000-tonnyg95-myhome-2864quj0ulx.ws-eu64.gitpod.io/api/listings/${params.id}/`
+          `/api/listings/${params.id}/`
         );
 
         dispatch({
@@ -82,7 +82,7 @@ function ListingDetails() {
       async function GetProfileInfo() {
         try {
           const response = await Axios.get(
-            `https://8000-tonnyg95-myhome-2864quj0ulx.ws-eu64.gitpod.io/api/profiles/${state.listingInfo.seller}/`
+            `/api/profiles/${state.listingInfo.seller}/`
           );
 
           dispatch({
@@ -132,7 +132,7 @@ function ListingDetails() {
     const confirmDelete = window.confirm('Are you sure you want to delete this listing?')
     if (confirmDelete){
       try {
-        const response = await Axios.delete(`https://8000-tonnyg95-myhome-2864quj0ulx.ws-eu64.gitpod.io/api/listings/${params.id}/delete/`)
+        const response = await Axios.delete(`/api/listings/${params.id}/delete/`)
         console.log(response.data)
         navigate('/listings')
       } catch(e){
