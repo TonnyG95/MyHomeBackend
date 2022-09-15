@@ -63,7 +63,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'corsheaders',
     'djoser',
-    'rest_framework.authtoken'
+    'rest_framework.authtoken',
+    'frontend'
 
 ]
 
