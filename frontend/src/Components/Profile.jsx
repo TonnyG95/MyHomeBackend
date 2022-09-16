@@ -313,7 +313,7 @@ function Profile() {
                   <h5 className='text-center my-3'>Welcome Back {GlobalState.userUsername}</h5> 
 
 
-                  <img className='rounded my-4 placeholed-image' src={ state.userProfile.profilePic ? state.userProfile.profilePic : 'https://res.cloudinary.com/dsq1kzjdy/image/upload/v1662651727/media/No-Image-Placeholder.svg_bgopvn.png' } />
+                  <img className='rounded my-4 placeholed-image' src={ state.userProfile.profilePic ? state.userProfile.profilePic : 'https://res.cloudinary.com/dsq1kzjdy/image/upload/v1663351361/media/image-placeholder_ooclbg.png' } />
                 
                     <h5 className='text-center m-4' >Information:</h5>
 

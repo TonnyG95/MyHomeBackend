@@ -171,7 +171,7 @@ function ListingDetails() {
               src={
                 state.sellerProfileInfo.profile_picture
                   ? state.sellerProfileInfo.profile_picture
-                  : "https://res.cloudinary.com/dsq1kzjdy/image/upload/v1662651727/media/No-Image-Placeholder.svg_bgopvn.png"
+                  : "https://res.cloudinary.com/dsq1kzjdy/image/upload/v1663351361/media/image-placeholder_ooclbg.png"
               }
               alt="test"
             />

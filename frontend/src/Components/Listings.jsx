@@ -22,17 +22,17 @@ function Listings() {
 
 
   const houseIcon = new Icon({
-		iconUrl: 'https://res.cloudinary.com/dsq1kzjdy/image/upload/v1663259061/media/house_hinzfe.png',
+		iconUrl: 'https://res.cloudinary.com/dsq1kzjdy/image/upload/v1663350339/media/house_sdr08p.png',
 		iconSize: [40, 40],
 	});
 
 	const apartmentIcon = new Icon({
-		iconUrl: 'https://res.cloudinary.com/dsq1kzjdy/image/upload/v1663259061/media/apartment_r0cksx.png',
+		iconUrl: 'https://res.cloudinary.com/dsq1kzjdy/image/upload/v1663350339/media/apartment_hyh8de.png',
 		iconSize: [40, 40],
 	});
 
 	const officeIcon = new Icon({
-		iconUrl: 'https://res.cloudinary.com/dsq1kzjdy/image/upload/v1663259061/media/office_uaxcqe.png',
+		iconUrl: 'https://res.cloudinary.com/dsq1kzjdy/image/upload/v1663350339/media/office_ymhoje.png',
 		iconSize: [40, 40],
 	});
   

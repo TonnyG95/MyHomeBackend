@@ -95,7 +95,7 @@ function AgencyDetails() {
               src={
                 state.userProfile.profilePic
                   ? state.userProfile.profilePic
-                  : "https://res.cloudinary.com/dsq1kzjdy/image/upload/v1662651727/media/No-Image-Placeholder.svg_bgopvn.png"
+                  : "https://res.cloudinary.com/dsq1kzjdy/image/upload/v1663351361/media/image-placeholder_ooclbg.png"
               }
               alt="test"
             />
@@ -148,7 +148,7 @@ function AgencyDetails() {
                   src={
                     listing.picture1
                       ? listing.picture1
-                      : "https://res.cloudinary.com/dsq1kzjdy/image/upload/v1662651727/media/No-Image-Placeholder.svg_bgopvn.png"
+                      : "https://res.cloudinary.com/dsq1kzjdy/image/upload/v1663351361/media/image-placeholder_ooclbg.png"
                   }
                 />
                 <Card.Body>

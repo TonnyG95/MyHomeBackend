@@ -18,10 +18,12 @@ from django.urls import path, include
 from listings.api import views as listings_api_views
 from users.api import views as users_api_views
 from django.views.generic import TemplateView
+from . import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', TemplateView.as_view(template_name='index.html')),
+    ##path('', TemplateView.as_view(template_name='index.html')),
+    path('', views.index, name='index'),
   
 
     path('api/listings/', listings_api_views.ListingList.as_view()),
