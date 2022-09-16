@@ -32,9 +32,9 @@ function Footer() {
           <Col xs={12} sm={12} md={4} lg={4} xl={4} className='text-center'>
 
           <h5 className='text-light mt-5'> Follow us on socials </h5>
-          <a href="https://www.facebook.com/MyHome.ie" target="_blank"><i class=" text-light  mt-4 social-icon fa-brands fa-facebook"></i></a>
-          <a href="https://twitter.com/myhomeproperty" target="_blank"><i class=" text-light  mt-4 social-icon fa-brands fa-twitter"></i></a>
-          <a href="https://www.instagram.com/MyHome.ie/" target="_blank"><i class=" text-light  mt-4 social-icon fa-brands fa-instagram"></i></a>
+          <a href="https://www.facebook.com/MyHome.ie" target="_blank"><i className=" text-light  mt-4 social-icon fa-brands fa-facebook"></i></a>
+          <a href="https://twitter.com/myhomeproperty" target="_blank"><i className=" text-light  mt-4 social-icon fa-brands fa-twitter"></i></a>
+          <a href="https://www.instagram.com/MyHome.ie/" target="_blank"><i className=" text-light  mt-4 social-icon fa-brands fa-instagram"></i></a>
          
           
           </Col>

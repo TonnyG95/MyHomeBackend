@@ -57,24 +57,24 @@ function Navigation() {
             navbarScroll
           >
             <LinkContainer to="/">
-              <Nav.Link> <i class="fa-solid fa-house"></i> Home Page</Nav.Link>
+              <Nav.Link> <i className="fa-solid fa-house"></i> Home Page</Nav.Link>
             </LinkContainer>
 
             <LinkContainer to="/listings">
-              <Nav.Link> <i class="fa-solid fa-house-laptop"></i> Listings</Nav.Link>
+              <Nav.Link> <i className="fa-solid fa-house-laptop"></i> Listings</Nav.Link>
             </LinkContainer>
 
             <LinkContainer to="/agencies">
-              <Nav.Link> <i class="fa-solid fa-building"></i> Agencies</Nav.Link>
+              <Nav.Link> <i className="fa-solid fa-building"></i> Agencies</Nav.Link>
             </LinkContainer>
 
 
             <LinkContainer to="/add-property">
-              <Nav.Link> <i class="fa-solid fa-house-medical"></i> Add Property</Nav.Link>
+              <Nav.Link> <i className="fa-solid fa-house-medical"></i> Add Property</Nav.Link>
             </LinkContainer>
 
             <LinkContainer to="/">
-            {GlobalState.userIsLogged ? <Nav.Link onClick={HandleLogout}> <i class="fa-solid fa-user"></i> Logout</Nav.Link> :<Nav.Link> <Link className='no-decoration text-light' to='/login'><i class="fa-solid fa-user"></i> Login</Link> </Nav.Link> }
+            {GlobalState.userIsLogged ? <Nav.Link onClick={HandleLogout}> <i className="fa-solid fa-user"></i> Logout</Nav.Link> :<Nav.Link> <Link className='no-decoration text-light' to='/login'><i className="fa-solid fa-user"></i> Login</Link> </Nav.Link> }
             </LinkContainer>
 
             <LinkContainer to="/profile">

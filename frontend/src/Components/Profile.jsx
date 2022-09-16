@@ -293,7 +293,7 @@ function Profile() {
                       </Row>
             
                       <Button className="m-3" variant="success" type="submit">
-                        Save <i class="fa-solid fa-floppy-disk"></i>
+                        Save <i className="fa-solid fa-floppy-disk"></i>
                       </Button>
                       
                     </Form>
@@ -427,7 +427,7 @@ function Profile() {
                       </Row>
             
                       <Button className="m-3" variant="success" type="submit">
-                        Save <i class="fa-solid fa-floppy-disk"></i>
+                        Save <i className="fa-solid fa-floppy-disk"></i>
                       </Button>
 
                       

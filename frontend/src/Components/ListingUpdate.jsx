@@ -319,7 +319,7 @@ import 'react-toastify/dist/ReactToastify.css';
             <Row
               className="justify-content-center align-items-center"
             >
-              <Button type="submit" className='btn btn-success mt-3'>Update <i class="bi bi-save"></i></Button>
+              <Button type="submit" className='btn btn-success mt-3'>Update <i className="bi bi-save"></i></Button>
               
 
            </Row>
