@@ -21,7 +21,7 @@ from . import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-  
+    path('', views.getRoutes, name='routes'),
 
     path('api/listings/', listings_api_views.ListingList.as_view()),
     path('api/listings/create/', listings_api_views.ListingCreate.as_view()),
