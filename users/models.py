@@ -2,8 +2,6 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 
 
-
-
 class User(AbstractUser):
     email = models.EmailField(unique=True)
 
@@ -14,7 +12,6 @@ class Profile(models.Model):
     phone_number = models.CharField(max_length=25, null=True, blank=True)
     bio = models.TextField(null=True, blank=True)
     profile_picture = models.ImageField(blank=True, null=True)
-
 
     def __str__(self):
         return f"Profile of {self.seller.username}"

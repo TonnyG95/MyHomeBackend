@@ -10,6 +10,7 @@
 
 
 A deployed API can be found [Here](https://ci-myhome.herokuapp.com/).
+A deployed Frontend can be found [Here](https://ci-myhomefrontend.herokuapp.com/).
 
 # Table of contents
 
@@ -19,16 +20,17 @@ A deployed API can be found [Here](https://ci-myhome.herokuapp.com/).
     - [What is MyHome?](#what-is-myhome)
     - [What is the idea behind this project?](#what-is-the-idea-behind-this-project)
 - [Technologies](#technologies)
-    - [This aplication is seperated in two parts. BackEnd and FrontEnd. Both apications are depolyed speretly and both use difrent technologies. You can find more informatiot about them here](#this-aplication-is-seperated-in-two-parts-backend-and-frontend-both-apications-are-depolyed-speretly-and-both-use-difrent-technologies-you-can-find-more-informatiot-about-them-here)
     - [FrontEnd Technologies](#frontend-technologies)
     - [BackEnd Technologies](#backend-technologies)
     - [Backend Requirements](#backend-requirements)
     - [User Stories](#user-stories)
     - [Seller Stories](#seller-stories)
-    - [Buyer/Tenent Stories](#buyertenent-stories)
+    - [Buyer/Tenant Stories](#buyertenant-stories)
 - [Testing](#testing)
     - [Testing User Stories](#testing-user-stories)
     - [Bugs and solutions](#bugs-and-solutions)
+    - [Python Code Validation](#python-code-validation)
+    - [Data Flow](#data-flow)
     - [API Performance](#api-performance)
 - [Deployment](#deployment)
 - [Forking the Repository](#forking-the-repository)
@@ -44,16 +46,17 @@ A deployed API can be found [Here](https://ci-myhome.herokuapp.com/).
 
 ### What is MyHome?
 
-MyHome is a real estate portal for seller and buyers, sellers can list their properties easly and quickly and buyes have full screen listing page whit all the listings on left side and map on right side so thay can easly select property but look or short desctipn of property or by location where they want to buy or rent houses,apartmants or offices.
+MyHome is a real estate portal for sellers and buyers, sellers can list their properties efficiently and quickly, and buyers have a full-screen listing page whit all the listings on the left side and a map on the right side so thay can easily select properties by look or short description of the property or by the location where they want to buy or rent houses, apartments or offices.
 
 ### What is the idea behind this project?
-The idea behidn MyHome was to create a simple,user-intuitive real esteted app that is not overwhelmed for users or sellers, thats works fast and is secure with simple registration and login forms and with quickes way to add new listins that buyrs or tenents can select by scroling on left side where they can see pcituers and short description of propery or on right by selecting propery on the map.
+
+The idea behind MyHome was to create a simple, user-intuitive real estate app that is not overwhelming for users or sellers, that works fast and is secure with simple registration and login forms and with a quick way to add new listings that buyers or tenants can select by scrolling on the left side where they can see pictures and a short description of the property or on the right by choosing property on the map.
 
 [Back to top](#table-of-contents)
 
 # Technologies 
 
-### This aplication is seperated in two parts. BackEnd and FrontEnd. Both apications are depolyed speretly and both use difrent technologies. You can find more informatiot about them here
+This application is separated into two parts. BackEnd and FrontEnd. Both applications are deployed separately, and both use different technologies. You can find more information about them here
 
 
 ### FrontEnd Technologies
@@ -61,12 +64,12 @@ The idea behidn MyHome was to create a simple,user-intuitive real esteted app th
 - HTML (build up layout and content of the application.)
 - CSS (custom styling and override Bootstrap stylings to fit with the theme of the app.)
 - ReactJS (interactive functionalities of the app.)
-- React-Bootstrap (the responsive front-end framework to build the layout and style the app.)
+- React-Bootstrap (the responsive front-end framework to build the layout and style of the app.)
 
 ### BackEnd Technologies
 
 - Python (backend functionalities handling data, database interaction, and CRUD functionalities.)
-- Django (the core framework used to build backend for MyHome.)
+- Django (the core framework used to build the backend for MyHome.)
 
 
 ### Backend Requirements
@@ -87,12 +90,11 @@ The idea behidn MyHome was to create a simple,user-intuitive real esteted app th
 [Back to top](#table-of-contents)
 
 
-
 ### User Stories
 - As a site user, I want to create an account.
-- As a Site User, I login in to my account quickly
-- As a Site User, I can visit website from any device
-- As a Site User, I don't have to wait to long for website to load
+- As a Site User, I login into my account quickly
+- As a Site User, I can visit a website from any device
+- As a Site User, I don't have to wait too long for a website to load
 - As a Site User, I want to be able to edit my profile information
 - As a site admin, I want to be able to see my registered users and their profiles
 - As a site admin, I want to be able to edit listings
@@ -100,23 +102,24 @@ The idea behidn MyHome was to create a simple,user-intuitive real esteted app th
 - As a site admin, I can delete users
 
 ### Seller Stories
-- As a seller, I can add a new listing to webiste
+- As a seller, I can add a new listing to the website
 - As a seller, I can create, read, update and delete my listings
 - As a seller, I can upload pictures for my listings
-- As a seller, I can display my or my compnay contant information
-- As a seller, I can display my other lisintgs on my profile
+- As a seller, I can display my or my company contact information
+- As a seller, I can display my other listings on my profile
 
-### Buyer/Tenent Stories
+### Buyer/Tenant Stories
 - As a buyer, I can view a listings
-- As a buyer, I can see pictures of property
-- As a buyer, I can see seller contact infromation
-- As a buyer, I can all listings by seller i'm interest in
-- As a buyer, I can view map and property location
+- As a buyer, I can see pictures of the property
+- As a buyer, I can see the seller's contact information
+- As a buyer, I can see all listings by seller I'm interested in
+- As a buyer, I can view maps and property location
 - As a buyer, I can view listing details
 
 [Back to top](#table-of-contents)
 
 # Testing
+
 
 ### Testing User Stories 
 
@@ -152,9 +155,35 @@ The idea behidn MyHome was to create a simple,user-intuitive real esteted app th
     - Idea was to deploy frontend and backend as one project but even with help of Gemma from Code Institue Tutor Assistance we ware not able to get django to load React app so we decide to deploy it as 2 sepered projects
 4. There was a problem with heroku and github.
     - The solution was to redeploy my app and create new postgres database.
+    
+### Python Code Validation
+
+PEP8 Online check - Results
+
+No significant errors.
+
+Files Tested: 
+backend/settings.py (4 line too long errors)  
+backend/urls.py (5 line too long errors)\ 
+backend/views.py (No errors)\
+listings/api/serializers.py (No errors)\
+listings/api/views.py (No errors)\ 
+listings/forms.py (3 line too long errors)\
+listings/models.py (No errors)\ 
+users/api/serializers.py (No errors)\
+users/models.py (No errors)\ 
+users/signals.py (No errors)
+
+[Back to top](#table-of-contents)
+
+### Data Flow
+
+For the live site, I connected Heroku's Postgres Database and for the local environment, I chose to remain connected to Sequel Light. The Entity-Relationship Diagram below shows how the database models relate to each other:
 
 
+![4IthT9I](https://user-images.githubusercontent.com/47572512/191779410-5c2ecde9-ec32-49c2-9e52-4edb43785e6d.png)
 
+[Back to top](#table-of-contents)
 
 ### API Performance
 
@@ -167,8 +196,6 @@ Test with [web.dev](https://web.dev/). gave me those results
 
 
 Test with [GTMetrix](https://gtmetrix.com/). gave me those results 
-
-
 
 
 [Back to top](#table-of-contents)
@@ -227,7 +254,7 @@ By forking the GitHub Repository we make a copy of the original repository on ou
 
 # Creating a Clone
 
-ow to run this project locally:
+How to run this project locally:
 
 1. Install the GitPod Browser [extension.](https://www.gitpod.io/docs/browser-extension/)
 2. After installation, restart the browser.
@@ -274,6 +301,6 @@ How to run this project within a local IDE, such as VSCode:
 During this project, I got a new mentor Rohit Sharma. I want to thank him for all tips and tricks that helped me improve this project and I want to thank him for all time he spent answering my questions. And big thanks to Code Institute Tutors Jonh and Gemma for helping me with this project. 
 
 ### Disclaimer
-This project was create for educational purposes only, and credits for all pictures/icons and listings used in this project go to their respective owners.
+This project was created for educational purposes only, and credits for all pictures/icons and listings used in this project go to their respective owners.
 
 [Back to top](#table-of-contents)

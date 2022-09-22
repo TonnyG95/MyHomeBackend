@@ -8,9 +8,6 @@ class ListingSerializer(serializers.ModelSerializer):
     def get_seller_agency_name(self, obj):
         return obj.seller.profile.agency_name
 
-
     class Meta:
         model = Listing
         fields = '__all__'
-
-    

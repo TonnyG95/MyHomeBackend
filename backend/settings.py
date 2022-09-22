@@ -16,8 +16,7 @@ import re
 import dj_database_url
 
 if os.path.isfile("env.py"):
-   import env
-
+    import env
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -33,16 +32,18 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['ci-myhome.herokuapp.com', 'localhost' ]
+ALLOWED_HOSTS = ['ci-myhome.herokuapp.com', 'localhost']
 
-CSRF_TRUSTED_ORIGINS=['https://8000-tonnyg95-myhome-2864quj0ulx.ws-eu64.gitpod.io']
+CSRF_TRUSTED_ORIGINS = [
+    'https://8000-tonnyg95-myhome-2864quj0ulx.ws-eu64.gitpod.io']
 
 if 'CLIENT_ORIGIN' in os.environ:
     CORS_ALLOWED_ORIGINS = [
         os.environ.get('CLIENT_ORIGIN')
     ]
 if 'CLIENT_ORIGIN_DEV' in os.environ:
-    extracted_url = re.match(r'^.+-', os.environ.get('CLIENT_ORIGIN_DEV', ''), re.IGNORECASE).group(0)
+    extracted_url = re.match(
+        r'^.+-', os.environ.get('CLIENT_ORIGIN_DEV', ''), re.IGNORECASE).group(0)
     CORS_ALLOWED_ORIGIN_REGEXES = [
         rf"{extracted_url}(eu|us)\d+\w\.gitpod\.io$",
     ]
@@ -65,7 +66,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'djoser',
     'rest_framework.authtoken',
-    
+
 
 ]
 
@@ -116,9 +117,8 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 # }
 
 DATABASES = {
-   'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
+    'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
 }
-
 
 
 # Password validation
@@ -159,7 +159,7 @@ STATIC_URL = '/static/'
 
 STATICFILES_STORAGE = 'cloudinary_storage.storage.StaticHashedCloudinaryStorage'
 
-STATICFILES_DIRS = [os.path.join(BASE_DIR, "frontend/build/static"),]
+STATICFILES_DIRS = [os.path.join(BASE_DIR, "frontend/build/static"), ]
 
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
@@ -171,8 +171,6 @@ DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 CORS_ORIGIN_ALLOW_ALL = True
 
 
-
-
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
@@ -182,7 +180,7 @@ AUTH_USER_MODEL = 'users.User'
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework.authentication.TokenAuthentication',
-        
+
     ),
 }
 
@@ -190,8 +188,3 @@ DJOSER = {
     'USER_CREATE_PASSWORD_RETYPE': True,
     'SEND_ACTIVATION_EMAIL': False
 }
-
-
-
-
-
