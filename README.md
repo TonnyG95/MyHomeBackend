@@ -183,7 +183,11 @@ Files Tested:\
 ![uPnsoce](https://user-images.githubusercontent.com/47572512/191781562-a881165e-deae-4542-8840-f4fe1cb459ce.png)
 
 
+<<<<<<< HEAD
 ### backend/views.py (No errors)
+=======
+### backend/views.py (No errors)\
+>>>>>>> refs/remotes/origin/main
 
 ![acPPvU2](https://user-images.githubusercontent.com/47572512/191781790-245d7892-d3c7-4517-a533-a69db4ceecad.png)
 
