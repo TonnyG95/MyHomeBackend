@@ -12,6 +12,7 @@
 A deployed API can be found [Here](https://ci-myhome.herokuapp.com/).
 A deployed Frontend can be found [Here](https://ci-myhomefrontend.herokuapp.com/).
 
+
 # Table of contents
 
 - [MyHome API](#myhome-api)
@@ -33,6 +34,7 @@ A deployed Frontend can be found [Here](https://ci-myhomefrontend.herokuapp.com/
     - [backend/settings.py (4 line too long errors)](#backendsettingspy-4-line-too-long-errors)
     - [backend/urls.py (5 line too long errors)](#backendurlspy-5-line-too-long-errors)
     - [backend/views.py (No errors)](#backendviewspy-no-errors)
+    - [backend/views.py (No errors)\\](#backendviewspy-no-errors-1)
     - [listings/api/serializers.py (No errors)](#listingsapiserializerspy-no-errors)
     - [listings/api/views.py (No errors)](#listingsapiviewspy-no-errors)
     - [listings/forms.py (3 line too long errors)](#listingsformspy-3-line-too-long-errors)
