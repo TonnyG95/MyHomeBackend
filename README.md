@@ -175,7 +175,7 @@ PEP8 Online check - Results
 
 No significant errors.
 
-Files Tested:\
+Files Tested:
 
 ### backend/settings.py (4 line too long errors)  
 ![EtL8h5p](https://user-images.githubusercontent.com/47572512/191781381-72b0ab0f-b0d5-45e5-a86f-a1fa36b465f5.png)
@@ -185,11 +185,7 @@ Files Tested:\
 ![uPnsoce](https://user-images.githubusercontent.com/47572512/191781562-a881165e-deae-4542-8840-f4fe1cb459ce.png)
 
 
-<<<<<<< HEAD
 ### backend/views.py (No errors)
-=======
-### backend/views.py (No errors)\
->>>>>>> refs/remotes/origin/main
 
 ![acPPvU2](https://user-images.githubusercontent.com/47572512/191781790-245d7892-d3c7-4517-a533-a69db4ceecad.png)
 
