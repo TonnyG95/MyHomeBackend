@@ -46,8 +46,8 @@ class Listing(models.Model):
     parking = models.BooleanField(default=False)
     date_posted = models.DateTimeField(default=timezone.now)
 
-    latitude = models.CharField(max_length=150)
-    longitude = models.CharField(max_length=150)
+    latitude = models.FloatField(max_length=150)
+    longitude = models.FloatField(max_length=150)
     picture1 = models.ImageField(blank=True, null=True)
     picture2 = models.ImageField(blank=True, null=True)
     picture3 = models.ImageField(blank=True, null=True)
