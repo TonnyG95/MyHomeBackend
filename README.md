@@ -320,7 +320,7 @@ How to run this project locally:
 How to run this project within a local IDE, such as VSCode:
 
 6. Log into [GitHub](https://github.com/).
-7. Locate the [GitHub Repository.](https://github.com/TonnyG95/task-mate).
+7. Locate the [GitHub Repository.](https://github.com/TonnyG95/MyHomeBackend).
 8. Under the repository name, click "Clone or download".
 9. In the Clone with HTTPs section, copy the clone URL for the repository.
 10. In your local IDE open the terminal.
